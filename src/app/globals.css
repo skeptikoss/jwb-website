@@ -1,26 +1,218 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* === JWB Design System: "Heritage Meets Haven" === */
+
+  /* Core semantic colors (mapped from CSS variables) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* JWB Brand Colors - Primary */
+  --color-navy: #1a365d;          /* Trust, tradition, depth */
+  --color-gold: #c9a227;          /* Hospitality, celebration, heritage */
+  --color-cream: #faf8f5;         /* Warmth, approachability */
+
+  /* JWB Brand Colors - Secondary */
+  --color-terracotta: #c45d3a;    /* Middle Eastern warmth, Singapore brick */
+  --color-sage: #7d8c6e;          /* Growth, Ganenu connection */
+  --color-sky: #6b9ac4;           /* Singapore sky/sea calm */
+
+  /* JWB Brand Colors - Neutrals */
+  --color-charcoal: #2d3748;      /* Primary text */
+  --color-warm-gray: #8a8680;     /* Secondary text */
+  --color-off-white: #f7f5f2;     /* Backgrounds */
+
+  /* JWB Semantic Colors */
+  --color-success: #4a7c59;
+  --color-error: #b94a48;
+  --color-warning: #c9a227;
+
+  /* Typography - Font Families */
+  --font-heading: var(--font-cormorant), serif;
+  --font-body: var(--font-source-sans), sans-serif;
+  --font-hebrew: var(--font-heebo), sans-serif;
+  --font-ui: var(--font-dm-sans), sans-serif;
+  --font-sans: var(--font-body);
+  --font-mono: ui-monospace, monospace;
+
+  /* Sidebar colors (for admin/member portal) */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Chart colors (for analytics/dashboards) */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Border Radius Scale */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* JWB Custom Shadows */
+  --shadow-warm: 0 4px 20px rgba(26, 54, 93, 0.08);
+  --shadow-warm-lg: 0 8px 30px rgba(26, 54, 93, 0.12);
+  --shadow-gold-glow: 0 0 20px rgba(201, 162, 39, 0.3);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+
+  /* JWB "Heritage Meets Haven" Light Theme */
+  /* Background: Cream (#faf8f5) */
+  --background: oklch(0.98 0.005 85);
+  /* Foreground: Charcoal (#2d3748) */
+  --foreground: oklch(0.32 0.02 255);
+
+  /* Card: White with warm tint */
+  --card: oklch(0.995 0.003 85);
+  --card-foreground: oklch(0.32 0.02 255);
+
+  /* Popover: Same as card */
+  --popover: oklch(0.995 0.003 85);
+  --popover-foreground: oklch(0.32 0.02 255);
+
+  /* Primary: Navy (#1a365d) - Trust, tradition */
+  --primary: oklch(0.31 0.06 255);
+  --primary-foreground: oklch(0.98 0.005 85);
+
+  /* Secondary: Cream (#faf8f5) */
+  --secondary: oklch(0.98 0.005 85);
+  --secondary-foreground: oklch(0.31 0.06 255);
+
+  /* Muted: Warm gray tones */
+  --muted: oklch(0.95 0.005 85);
+  --muted-foreground: oklch(0.55 0.01 60);
+
+  /* Accent: Gold (#c9a227) - Hospitality, celebration */
+  --accent: oklch(0.72 0.14 85);
+  --accent-foreground: oklch(0.25 0.02 255);
+
+  /* Destructive: JWB Error Red (#b94a48) */
+  --destructive: oklch(0.52 0.18 25);
+
+  /* Border: Subtle warm tone */
+  --border: oklch(0.88 0.01 85);
+  --input: oklch(0.88 0.01 85);
+
+  /* Ring: Navy for focus states */
+  --ring: oklch(0.31 0.06 255);
+
+  /* Chart colors using JWB palette */
+  --chart-1: oklch(0.31 0.06 255);  /* Navy */
+  --chart-2: oklch(0.72 0.14 85);   /* Gold */
+  --chart-3: oklch(0.55 0.08 145);  /* Sage */
+  --chart-4: oklch(0.58 0.16 30);   /* Terracotta */
+  --chart-5: oklch(0.65 0.1 235);   /* Sky */
+
+  /* Sidebar: Navy-based for member portal */
+  --sidebar: oklch(0.98 0.005 85);
+  --sidebar-foreground: oklch(0.32 0.02 255);
+  --sidebar-primary: oklch(0.31 0.06 255);
+  --sidebar-primary-foreground: oklch(0.98 0.005 85);
+  --sidebar-accent: oklch(0.72 0.14 85);
+  --sidebar-accent-foreground: oklch(0.25 0.02 255);
+  --sidebar-border: oklch(0.88 0.01 85);
+  --sidebar-ring: oklch(0.31 0.06 255);
+}
+
+.dark {
+  /* JWB Dark Theme - Navy-based for member portal/admin */
+  --background: oklch(0.18 0.03 255);
+  --foreground: oklch(0.98 0.005 85);
+  --card: oklch(0.22 0.03 255);
+  --card-foreground: oklch(0.98 0.005 85);
+  --popover: oklch(0.22 0.03 255);
+  --popover-foreground: oklch(0.98 0.005 85);
+  --primary: oklch(0.72 0.14 85);   /* Gold as primary in dark */
+  --primary-foreground: oklch(0.18 0.03 255);
+  --secondary: oklch(0.28 0.03 255);
+  --secondary-foreground: oklch(0.98 0.005 85);
+  --muted: oklch(0.28 0.03 255);
+  --muted-foreground: oklch(0.65 0.01 85);
+  --accent: oklch(0.72 0.14 85);
+  --accent-foreground: oklch(0.18 0.03 255);
+  --destructive: oklch(0.58 0.2 25);
+  --border: oklch(0.35 0.02 255);
+  --input: oklch(0.35 0.02 255);
+  --ring: oklch(0.72 0.14 85);
+  --chart-1: oklch(0.72 0.14 85);   /* Gold */
+  --chart-2: oklch(0.65 0.1 235);   /* Sky */
+  --chart-3: oklch(0.55 0.08 145);  /* Sage */
+  --chart-4: oklch(0.58 0.16 30);   /* Terracotta */
+  --chart-5: oklch(0.98 0.005 85);  /* Cream */
+  --sidebar: oklch(0.15 0.03 255);
+  --sidebar-foreground: oklch(0.98 0.005 85);
+  --sidebar-primary: oklch(0.72 0.14 85);
+  --sidebar-primary-foreground: oklch(0.15 0.03 255);
+  --sidebar-accent: oklch(0.28 0.03 255);
+  --sidebar-accent-foreground: oklch(0.98 0.005 85);
+  --sidebar-border: oklch(0.35 0.02 255);
+  --sidebar-ring: oklch(0.72 0.14 85);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: var(--font-hebrew);
+  }
+
+  /* Selection highlighting with brand colors */
+  ::selection {
+    background-color: oklch(0.72 0.14 85 / 0.3); /* Gold at 30% */
+    color: oklch(0.31 0.06 255); /* Navy */
+  }
 }

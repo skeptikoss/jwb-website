@@ -1,0 +1,69 @@
+{
+  "common": {
+    "siteName": "JWB Singapore",
+    "siteDescription": "Jewish Welfare Board of Singapore",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "readMore": "Read More"
+  },
+  "nav": {
+    "about": "About",
+    "synagogues": "Synagogues",
+    "events": "Events",
+    "shop": "Shop",
+    "museum": "Museum",
+    "contact": "Contact",
+    "donate": "Donate",
+    "memberPortal": "Member Portal"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to the Jewish Community of Singapore",
+      "description": "A warm haven for Jewish residents and visitors in the heart of Southeast Asia. Discover our rich heritage, join our vibrant community, and experience authentic Jewish life in Singapore.",
+      "ctaEvents": "Upcoming Events",
+      "ctaLearnMore": "Learn More"
+    },
+    "shabbatTimes": {
+      "title": "Shabbat Times",
+      "candleLighting": "Candle Lighting",
+      "havdalah": "Havdalah",
+      "viewServices": "View Service Times"
+    },
+    "events": {
+      "title": "Upcoming Events",
+      "allEvents": "All Events"
+    },
+    "shop": {
+      "title": "Kosher Shop",
+      "description": "Fresh kosher groceries, baked goods, wine, and Judaica items available online.",
+      "browse": "Browse Shop"
+    },
+    "donate": {
+      "title": "Support Us",
+      "description": "Help us maintain our synagogues and support community programs.",
+      "makeDonation": "Make a Donation"
+    },
+    "synagogues": {
+      "title": "Our Historic Synagogues",
+      "description": "Two beautifully preserved synagogues in the heart of Singapore, each with their own unique character and history."
+    },
+    "cta": {
+      "title": "Join Our Community",
+      "description": "Whether you're a Singapore resident or just visiting, we welcome you to join us for Shabbat services, community meals, and special events.",
+      "rsvp": "RSVP for Shabbat",
+      "contact": "Get in Touch"
+    }
+  },
+  "footer": {
+    "description": "Serving the Jewish community in Singapore since 1878.",
+    "sections": {
+      "community": "Community",
+      "synagogues": "Synagogues",
+      "programs": "Programs",
+      "visit": "Visit & Support"
+    },
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
