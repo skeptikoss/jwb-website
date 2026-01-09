@@ -7,7 +7,8 @@
 - **Type:** Portfolio/demo project (not live client)
 - **Stack:** Next.js 16 + React 19 + Tailwind v4 + Sanity CMS + Stripe (test mode)
 - **Design:** "Heritage Meets Haven" theme with Hebrew RTL support
-- **Status:** Phase A (Foundation) complete — see `roadmap.md`
+- **Status:** Phase B (Core Content) in progress — see `roadmap.md`
+- **Sanity Project ID:** `r3h9xffe`
 
 ## Key Files
 
@@ -18,6 +19,8 @@
 | `~/.claude/plans/parsed-orbiting-zebra.md` | Original project plan/specification |
 | `src/app/globals.css` | Design tokens, color palette, base styles |
 | `src/i18n/` | Internationalization config and messages |
+| `src/sanity/schemaTypes/` | Sanity CMS schemas (page, synagogue, person, etc.) |
+| `sanity.config.ts` | Sanity Studio configuration |
 
 ## Architecture
 
@@ -29,6 +32,7 @@ src/
 │   ├── [locale]/          # Locale-based routing (en, he)
 │   │   ├── layout.tsx     # RTL handling, NextIntlClientProvider
 │   │   └── page.tsx       # Homepage
+│   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
 │   └── globals.css        # Design tokens
 ├── components/
@@ -42,6 +46,14 @@ src/
 │   ├── config.ts          # Locale definitions
 │   ├── routing.ts         # next-intl routing
 │   └── navigation.ts      # i18n-aware Link, useRouter
+├── sanity/
+│   ├── schemaTypes/       # Content schemas
+│   │   ├── documents/     # page, synagogue, person, educationProgram
+│   │   ├── objects/       # address, serviceTime, seo
+│   │   ├── singletons/    # settings
+│   │   └── locale.ts      # localeString, localeText, localeBlockContent
+│   ├── lib/               # client.ts, image.ts
+│   └── structure.ts       # Studio sidebar structure
 └── lib/
     └── utils.ts           # cn() helper for Tailwind
 ```
@@ -170,8 +182,44 @@ npm run start    # Start production server
 
 **Vercel:** Connected to GitHub, auto-deploys on push to main.
 
+## Sanity CMS
+
+### Accessing the Studio
+
+```bash
+npm run dev
+# Visit http://localhost:3000/studio
+```
+
+### Bilingual Content Pattern
+
+All content uses field-level localization with `en` and `he` sub-fields:
+
+```typescript
+// Schema definition
+{
+  name: "title",
+  type: "localeString",  // Has title.en and title.he
+}
+
+// Fetching with GROQ
+const page = await client.fetch(`*[_type == "page"][0]`);
+const title = page.title[locale]; // "en" or "he"
+```
+
+### Available Schemas
+
+| Schema | Type | Purpose |
+|--------|------|---------|
+| `page` | Document | Generic content pages |
+| `synagogue` | Document | Synagogue details with service times |
+| `person` | Document | Rabbi, staff, board members |
+| `educationProgram` | Document | Schools and programs |
+| `settings` | Singleton | Site-wide settings, Shabbat times |
+
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase A Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase B In Progress (30%)**.
 
-Next up: Phase B (Core Content) — Sanity CMS setup and content pages.
+Completed: i18n integration, Sanity CMS setup
+Next: Create content pages that fetch from Sanity.

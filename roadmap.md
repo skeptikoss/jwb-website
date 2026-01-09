@@ -11,7 +11,7 @@
 | Phase | Status | Progress |
 |-------|--------|----------|
 | A. Foundation | ✅ Complete | 100% |
-| B. Core Content | 🔲 Not Started | 0% |
+| B. Core Content | 🔄 In Progress | 30% |
 | C. E-commerce | 🔲 Not Started | 0% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
@@ -91,30 +91,45 @@ src/
 
 ---
 
-## Phase B: Core Content 🔲
+## Phase B: Core Content 🔄
 
-**Status:** Not Started
+**Status:** In Progress (30%)
+**Started:** 2025-01-09
 
-### Tasks
+### Completed
 
-- [ ] Set up Sanity Studio
-  - [ ] Create Sanity project
-  - [ ] Configure schemas (page, settings, navigation)
-  - [ ] Set up preview mode
-- [ ] Content pages
+- [x] i18n integration in components
+  - [x] Header uses `useTranslations()` with working language toggle
+  - [x] Footer uses `useTranslations()` with i18n-aware links
+  - [x] Homepage uses `getTranslations()` (server component)
+  - [x] RTL support verified on `/he` route
+- [x] Set up Sanity Studio
+  - [x] Create Sanity project (ID: `r3h9xffe`)
+  - [x] Embedded studio at `/studio`
+  - [x] Configure bilingual schemas with field-level localization
+    - `localeString`, `localeText`, `localeBlockContent` types
+    - `page`, `synagogue`, `person`, `educationProgram` documents
+    - `settings` singleton
+    - `address`, `serviceTime`, `seo` objects
+  - [x] Studio structure with organized sections
+
+### Remaining
+
+- [ ] Set up preview mode for content editors
+- [ ] Content pages (fetch from Sanity)
+  - [ ] History page
   - [ ] About page
-  - [ ] History page with timeline
-  - [ ] Synagogues section
-    - [ ] Maghain Aboth page
-    - [ ] Chesed El page
-  - [ ] Education section
+  - [ ] Synagogues section (`/synagogues`, `/synagogues/[slug]`)
+  - [ ] Education section (`/education`, `/education/[slug]`)
   - [ ] Travel Info page
   - [ ] Contact page with form
-- [ ] Scrape remaining content from singaporejews.com
-  - [ ] The Rabbi page
-  - [ ] The Youth Leader page
-  - [ ] Ganenu Preschool page
-  - [ ] Youth Programs page
+- [ ] Create content in Sanity
+  - [ ] Maghain Aboth synagogue
+  - [ ] Chesed El synagogue
+  - [ ] Rabbi profile
+  - [ ] Youth Leader profile
+  - [ ] Education programs (Ganenu, Sunday School, etc.)
+- [ ] Scrape reference content from singaporejews.com
 
 ---
 
@@ -205,6 +220,8 @@ src/
 | 2025-01-08 | i18n Library | next-intl | Best App Router support, URL-based routing |
 | 2025-01-08 | Locale Strategy | `as-needed` prefix | Only `/he/...` shows prefix, `/` defaults to English |
 | 2025-01-08 | Color Format | OKLCH | Tailwind v4 default, perceptually uniform |
+| 2025-01-09 | Sanity Studio | Embedded at `/studio` | Single deployment, shared config, simpler DevOps |
+| 2025-01-09 | Localization | Field-level (not document) | Keeps translations synchronized, easier tracking |
 
 ---
 
