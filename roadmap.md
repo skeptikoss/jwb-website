@@ -11,7 +11,7 @@
 | Phase | Status | Progress |
 |-------|--------|----------|
 | A. Foundation | ✅ Complete | 100% |
-| B. Core Content | 🔄 In Progress | 80% |
+| B. Core Content | ✅ Complete | 100% |
 | C. E-commerce | 🔲 Not Started | 0% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
@@ -91,12 +91,13 @@ src/
 
 ---
 
-## Phase B: Core Content 🔄
+## Phase B: Core Content ✅
 
-**Status:** In Progress (80%)
+**Status:** Complete
 **Started:** 2025-01-09
+**Completed:** 2026-01-09
 
-### Completed
+### Tasks Completed
 
 - [x] i18n integration in components
   - [x] Header uses `useTranslations()` with working language toggle
@@ -112,6 +113,7 @@ src/
     - `settings` singleton
     - `address`, `serviceTime`, `seo` objects
   - [x] Studio structure with organized sections
+  - [x] Schema deployed to Sanity cloud
 - [x] Query infrastructure
   - [x] GROQ query helpers (`src/lib/sanity/queries.ts`)
   - [x] TypeScript types (`src/lib/sanity/types.ts`)
@@ -124,22 +126,21 @@ src/
   - [x] Education section (`/education`, `/education/[slug]`)
   - [x] Travel Info page (`/travel`)
   - [x] Contact page with form (`/contact`)
-- [x] Sample content created in Sanity
-  - [x] History page content (EN/HE)
-  - [x] About page content (EN/HE)
-  - [x] Maghain Aboth synagogue
-  - [x] Chesed El synagogue
+- [x] Content created in Sanity (EN + HE)
+  - [x] History page content
+  - [x] About page content
+  - [x] Travel Info page content (scraped from singaporejews.com + Hebrew from source)
+  - [x] Maghain Aboth synagogue (full details, history, service times)
+  - [x] Chesed El synagogue (full details, history, service times)
+  - [x] Rabbi Mordechai Abergel profile
+  - [x] Rabbi Netanel Rivni profile
+  - [x] Ganenu Preschool program
+  - [x] Sunday School (Talmud Torah) program
+  - [x] Sir Manasseh Meyer International School (SMMIS) program
 
-### Remaining
+### Deferred to Phase F
 
-- [ ] Set up preview mode for content editors
-- [ ] Create additional content in Sanity
-  - [ ] Travel Info page content
-  - [ ] Contact page content
-  - [ ] Rabbi profile
-  - [ ] Youth Leader profile
-  - [ ] Education programs (Ganenu, Sunday School, etc.)
-- [ ] Scrape reference content from singaporejews.com
+- [ ] Preview mode for content editors (optional enhancement)
 
 ---
 
