@@ -8,5 +8,6 @@ export const config = {
   // - api routes
   // - _next (Next.js internals)
   // - static files (images, etc.)
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // - studio (Sanity Studio)
+  matcher: ["/((?!api|_next|studio|.*\\..*).*)"],
 };

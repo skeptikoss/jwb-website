@@ -62,6 +62,24 @@
       "programs": "Programs",
       "visit": "Visit & Support"
     },
+    "links": {
+      "aboutUs": "About Us",
+      "history": "History",
+      "theRabbi": "The Rabbi",
+      "contact": "Contact",
+      "maghainAboth": "Maghain Aboth",
+      "chesedEl": "Chesed El",
+      "serviceTimes": "Service Times",
+      "travelInfo": "Travel Info",
+      "events": "Events",
+      "education": "Education",
+      "ganenuPreschool": "Ganenu Preschool",
+      "youthPrograms": "Youth Programs",
+      "museum": "Museum",
+      "shop": "Shop",
+      "donate": "Donate",
+      "memberPortal": "Member Portal"
+    },
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

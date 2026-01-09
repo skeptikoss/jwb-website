@@ -1,8 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ShoppingCart, Globe } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { locales, localeNames, type Locale } from "@/i18n/config";
+import { Menu, ShoppingCart, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -13,17 +15,33 @@ import {
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 
-const navigation = [
-  { name: "About", href: "/about" },
-  { name: "Synagogues", href: "/synagogues" },
-  { name: "Events", href: "/events" },
-  { name: "Shop", href: "/shop" },
-  { name: "Museum", href: "/museum" },
-  { name: "Contact", href: "/contact" },
-];
+// Navigation items with translation keys
+const navigationKeys = [
+  { key: "about", href: "/about" },
+  { key: "synagogues", href: "/synagogues" },
+  { key: "events", href: "/events" },
+  { key: "shop", href: "/shop" },
+  { key: "museum", href: "/museum" },
+  { key: "contact", href: "/contact" },
+] as const;
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
+  const locale = useLocale() as Locale;
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Switch to the other locale
+  const toggleLocale = () => {
+    const newLocale = locale === "en" ? "he" : "en";
+    router.replace(pathname, { locale: newLocale });
+  };
+
+  // Get the display name for the alternate locale
+  const alternateLocale = locale === "en" ? "he" : "en";
+  const alternateLocaleName = localeNames[alternateLocale];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-cream/95 backdrop-blur-sm">
@@ -31,19 +49,19 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span className="font-heading text-xl font-bold text-navy">
-            JWB Singapore
+            {tCommon("siteName")}
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex">
-          {navigation.map((item) => (
+          {navigationKeys.map((item) => (
             <Link
-              key={item.name}
+              key={item.key}
               href={item.href}
               className="font-ui text-sm font-medium text-charcoal transition-colors hover:text-navy"
             >
-              {item.name}
+              {t(item.key)}
             </Link>
           ))}
         </nav>
@@ -53,11 +71,13 @@ export function Header() {
           {/* Language Toggle */}
           <Button
             variant="ghost"
-            size="icon"
+            size="sm"
+            onClick={toggleLocale}
             className="text-charcoal hover:text-navy"
-            aria-label="Toggle language"
+            aria-label={`Switch to ${alternateLocaleName}`}
           >
-            <Globe className="h-5 w-5" />
+            <Globe className="me-1.5 h-4 w-4" />
+            <span className="font-ui text-sm">{alternateLocaleName}</span>
           </Button>
 
           {/* Cart */}
@@ -70,7 +90,7 @@ export function Header() {
             <ShoppingCart className="h-5 w-5" />
             <Badge
               variant="default"
-              className="absolute -right-1 -top-1 h-5 w-5 rounded-full bg-gold p-0 text-xs text-charcoal"
+              className="absolute -end-1 -top-1 h-5 w-5 rounded-full bg-gold p-0 text-xs text-charcoal"
             >
               0
             </Badge>
@@ -81,7 +101,7 @@ export function Header() {
             asChild
             className="hidden bg-navy text-cream hover:bg-navy/90 sm:inline-flex"
           >
-            <Link href="/donate">Donate</Link>
+            <Link href="/donate">{t("donate")}</Link>
           </Button>
 
           {/* Mobile Menu */}
@@ -99,13 +119,13 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] bg-cream">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <nav className="mt-8 flex flex-col gap-4">
-                {navigation.map((item) => (
-                  <SheetClose asChild key={item.name}>
+                {navigationKeys.map((item) => (
+                  <SheetClose asChild key={item.key}>
                     <Link
                       href={item.href}
                       className="font-ui text-lg font-medium text-charcoal transition-colors hover:text-navy"
                     >
-                      {item.name}
+                      {t(item.key)}
                     </Link>
                   </SheetClose>
                 ))}
@@ -115,9 +135,21 @@ export function Header() {
                     href="/donate"
                     className="inline-flex items-center justify-center rounded-md bg-navy px-4 py-2 font-ui text-sm font-medium text-cream transition-colors hover:bg-navy/90"
                   >
-                    Donate
+                    {t("donate")}
                   </Link>
                 </SheetClose>
+                {/* Language toggle in mobile menu */}
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    toggleLocale();
+                    setIsOpen(false);
+                  }}
+                  className="mt-2 border-navy text-navy"
+                >
+                  <Globe className="me-2 h-4 w-4" />
+                  {alternateLocaleName}
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>

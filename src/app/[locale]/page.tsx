@@ -1,11 +1,15 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations("home");
+  const tCommon = await getTranslations("common");
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -16,12 +20,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                Welcome to the Jewish Community of Singapore
+                {t("hero.title")}
               </h1>
               <p className="mt-6 font-body text-lg text-cream/80 sm:text-xl">
-                A warm haven for Jewish residents and visitors in the heart of
-                Southeast Asia. Discover our rich heritage, join our vibrant
-                community, and experience authentic Jewish life in Singapore.
+                {t("hero.description")}
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button
@@ -30,17 +32,16 @@ export default function Home() {
                   className="bg-gold text-charcoal hover:bg-gold/90"
                 >
                   <Link href="/events">
-                    Upcoming Events
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {t("hero.ctaEvents")}
+                    <ArrowRight className="ms-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button
                   asChild
-                  variant="outline"
                   size="lg"
-                  className="border-cream text-cream hover:bg-cream/10"
+                  className="border border-cream bg-transparent text-cream hover:bg-cream/10"
                 >
-                  <Link href="/about">Learn More</Link>
+                  <Link href="/about">{t("hero.ctaLearnMore")}</Link>
                 </Button>
               </div>
             </div>
@@ -55,26 +56,26 @@ export default function Home() {
               <Card className="border-t-[3px] border-t-gold bg-white shadow-sm transition-shadow hover:shadow-md">
                 <CardHeader className="pb-2">
                   <CardTitle className="font-heading text-lg text-navy">
-                    Shabbat Times
+                    {t("shabbatTimes.title")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 font-body text-sm text-charcoal">
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gold" />
-                      <span>Candle Lighting: 6:58 PM</span>
+                      <span>{t("shabbatTimes.candleLighting")}: 6:58 PM</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gold" />
-                      <span>Havdalah: 7:53 PM</span>
+                      <span>{t("shabbatTimes.havdalah")}: 7:53 PM</span>
                     </div>
                   </div>
                   <Link
                     href="/services"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"
                   >
-                    View Service Times
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    {t("shabbatTimes.viewServices")}
+                    <ArrowRight className="ms-1 h-3 w-3" />
                   </Link>
                 </CardContent>
               </Card>
@@ -83,7 +84,7 @@ export default function Home() {
               <Card className="border-t-[3px] border-t-gold bg-white shadow-sm transition-shadow hover:shadow-md">
                 <CardHeader className="pb-2">
                   <CardTitle className="font-heading text-lg text-navy">
-                    Upcoming Events
+                    {t("events.title")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -98,8 +99,8 @@ export default function Home() {
                     href="/events"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"
                   >
-                    All Events
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    {t("events.allEvents")}
+                    <ArrowRight className="ms-1 h-3 w-3" />
                   </Link>
                 </CardContent>
               </Card>
@@ -108,20 +109,19 @@ export default function Home() {
               <Card className="border-t-[3px] border-t-gold bg-white shadow-sm transition-shadow hover:shadow-md">
                 <CardHeader className="pb-2">
                   <CardTitle className="font-heading text-lg text-navy">
-                    Kosher Shop
+                    {t("shop.title")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="font-body text-sm text-charcoal">
-                    Fresh kosher groceries, baked goods, wine, and Judaica items
-                    available online.
+                    {t("shop.description")}
                   </p>
                   <Link
                     href="/shop"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"
                   >
-                    Browse Shop
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    {t("shop.browse")}
+                    <ArrowRight className="ms-1 h-3 w-3" />
                   </Link>
                 </CardContent>
               </Card>
@@ -130,20 +130,19 @@ export default function Home() {
               <Card className="border-t-[3px] border-t-gold bg-white shadow-sm transition-shadow hover:shadow-md">
                 <CardHeader className="pb-2">
                   <CardTitle className="font-heading text-lg text-navy">
-                    Support Us
+                    {t("donate.title")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="font-body text-sm text-charcoal">
-                    Help us maintain our synagogues and support community
-                    programs.
+                    {t("donate.description")}
                   </p>
                   <Link
                     href="/donate"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"
                   >
-                    Make a Donation
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    {t("donate.makeDonation")}
+                    <ArrowRight className="ms-1 h-3 w-3" />
                   </Link>
                 </CardContent>
               </Card>
@@ -156,11 +155,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-                Our Historic Synagogues
+                {t("synagogues.title")}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl font-body text-lg text-warm-gray">
-                Two beautifully preserved synagogues in the heart of Singapore,
-                each with their own unique character and history.
+                {t("synagogues.description")}
               </p>
             </div>
 
@@ -189,7 +187,7 @@ export default function Home() {
                     <span>24 Waterloo Street</span>
                   </div>
                   <Button asChild className="mt-4 bg-navy text-cream">
-                    <Link href="/synagogues/maghain-aboth">Learn More</Link>
+                    <Link href="/synagogues/maghain-aboth">{tCommon("learnMore")}</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -218,7 +216,7 @@ export default function Home() {
                     <span>2 Oxley Rise</span>
                   </div>
                   <Button asChild className="mt-4 bg-navy text-cream">
-                    <Link href="/synagogues/chesed-el">Learn More</Link>
+                    <Link href="/synagogues/chesed-el">{tCommon("learnMore")}</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -230,12 +228,10 @@ export default function Home() {
         <section className="bg-gold py-16">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-charcoal">
-              Join Our Community
+              {t("cta.title")}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-lg text-charcoal/80">
-              Whether you&apos;re a Singapore resident or just visiting, we
-              welcome you to join us for Shabbat services, community meals, and
-              special events.
+              {t("cta.description")}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
@@ -243,7 +239,7 @@ export default function Home() {
                 size="lg"
                 className="bg-navy text-cream hover:bg-navy/90"
               >
-                <Link href="/events">RSVP for Shabbat</Link>
+                <Link href="/events">{t("cta.rsvp")}</Link>
               </Button>
               <Button
                 asChild
@@ -251,7 +247,7 @@ export default function Home() {
                 size="lg"
                 className="border-navy text-navy hover:bg-navy hover:text-cream"
               >
-                <Link href="/contact">Get in Touch</Link>
+                <Link href="/contact">{t("cta.contact")}</Link>
               </Button>
             </div>
           </div>

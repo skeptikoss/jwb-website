@@ -1,34 +1,41 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 
+// Footer link definitions with translation keys
 const footerLinks = {
   community: [
-    { name: "About Us", href: "/about" },
-    { name: "History", href: "/history" },
-    { name: "The Rabbi", href: "/the-rabbi" },
-    { name: "Contact", href: "/contact" },
+    { key: "aboutUs", href: "/about" },
+    { key: "history", href: "/history" },
+    { key: "theRabbi", href: "/about/rabbi" },
+    { key: "contact", href: "/contact" },
   ],
   synagogues: [
-    { name: "Maghain Aboth", href: "/synagogues/maghain-aboth" },
-    { name: "Chesed El", href: "/synagogues/chesed-el" },
-    { name: "Service Times", href: "/services" },
-    { name: "Travel Info", href: "/travel-info" },
+    { key: "maghainAboth", href: "/synagogues/maghain-aboth" },
+    { key: "chesedEl", href: "/synagogues/chesed-el" },
+    { key: "serviceTimes", href: "/services" },
+    { key: "travelInfo", href: "/travel" },
   ],
   programs: [
-    { name: "Events", href: "/events" },
-    { name: "Education", href: "/education" },
-    { name: "Ganenu Preschool", href: "/ganenu-preschool" },
-    { name: "Youth Programs", href: "/youth-programs" },
+    { key: "events", href: "/events" },
+    { key: "education", href: "/education" },
+    { key: "ganenuPreschool", href: "/education/ganenu" },
+    { key: "youthPrograms", href: "/education/youth" },
   ],
   visit: [
-    { name: "Museum", href: "/museum" },
-    { name: "Shop", href: "/shop" },
-    { name: "Donate", href: "/donate" },
-    { name: "Member Portal", href: "/member" },
+    { key: "museum", href: "/museum" },
+    { key: "shop", href: "/shop" },
+    { key: "donate", href: "/donate" },
+    { key: "memberPortal", href: "/member" },
   ],
-};
+} as const;
 
 export function Footer() {
+  const t = useTranslations("footer");
+  const tCommon = useTranslations("common");
+
   return (
     <footer className="border-t border-border bg-navy text-cream">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -38,11 +45,11 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <span className="font-heading text-2xl font-bold text-cream">
-                JWB Singapore
+                {tCommon("siteName")}
               </span>
             </Link>
             <p className="mt-4 font-body text-sm text-cream/80">
-              Serving the Jewish community in Singapore since 1878.
+              {t("description")}
             </p>
 
             {/* Contact Info */}
@@ -55,11 +62,11 @@ export function Footer() {
                 info@singaporejews.com
               </a>
               <a
-                href="tel:+6563362189"
+                href="tel:+6563372189"
                 className="flex items-center gap-2 text-sm text-cream/80 transition-colors hover:text-gold"
               >
                 <Phone className="h-4 w-4" />
-                +65 6336 2189
+                +65 6337 2189
               </a>
               <div className="flex items-start gap-2 text-sm text-cream/80">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -97,16 +104,16 @@ export function Footer() {
           {/* Link Sections */}
           <div>
             <h3 className="font-ui text-sm font-semibold uppercase tracking-wider text-gold">
-              Community
+              {t("sections.community")}
             </h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.community.map((link) => (
-                <li key={link.name}>
+                <li key={link.key}>
                   <Link
                     href={link.href}
                     className="font-body text-sm text-cream/80 transition-colors hover:text-gold"
                   >
-                    {link.name}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -115,16 +122,16 @@ export function Footer() {
 
           <div>
             <h3 className="font-ui text-sm font-semibold uppercase tracking-wider text-gold">
-              Synagogues
+              {t("sections.synagogues")}
             </h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.synagogues.map((link) => (
-                <li key={link.name}>
+                <li key={link.key}>
                   <Link
                     href={link.href}
                     className="font-body text-sm text-cream/80 transition-colors hover:text-gold"
                   >
-                    {link.name}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -133,16 +140,16 @@ export function Footer() {
 
           <div>
             <h3 className="font-ui text-sm font-semibold uppercase tracking-wider text-gold">
-              Programs
+              {t("sections.programs")}
             </h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.programs.map((link) => (
-                <li key={link.name}>
+                <li key={link.key}>
                   <Link
                     href={link.href}
                     className="font-body text-sm text-cream/80 transition-colors hover:text-gold"
                   >
-                    {link.name}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -151,16 +158,16 @@ export function Footer() {
 
           <div>
             <h3 className="font-ui text-sm font-semibold uppercase tracking-wider text-gold">
-              Visit & Support
+              {t("sections.visit")}
             </h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.visit.map((link) => (
-                <li key={link.name}>
+                <li key={link.key}>
                   <Link
                     href={link.href}
                     className="font-body text-sm text-cream/80 transition-colors hover:text-gold"
                   >
-                    {link.name}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -172,21 +179,21 @@ export function Footer() {
         <div className="mt-12 border-t border-cream/20 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="font-body text-sm text-cream/60">
-              &copy; {new Date().getFullYear()} Jewish Welfare Board Singapore.
-              All rights reserved.
+              &copy; {new Date().getFullYear()} {tCommon("siteName")}.{" "}
+              {t("copyright")}
             </p>
             <div className="flex gap-6">
               <Link
                 href="/privacy"
                 className="font-body text-sm text-cream/60 transition-colors hover:text-gold"
               >
-                Privacy Policy
+                {t("privacy")}
               </Link>
               <Link
                 href="/terms"
                 className="font-body text-sm text-cream/60 transition-colors hover:text-gold"
               >
-                Terms of Service
+                {t("terms")}
               </Link>
             </div>
           </div>
