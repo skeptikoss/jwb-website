@@ -31,13 +31,22 @@ src/
 ├── app/
 │   ├── [locale]/          # Locale-based routing (en, he)
 │   │   ├── layout.tsx     # RTL handling, NextIntlClientProvider
-│   │   └── page.tsx       # Homepage
+│   │   ├── page.tsx       # Homepage
+│   │   ├── history/       # History page
+│   │   ├── about/         # About page
+│   │   ├── contact/       # Contact page with form
+│   │   ├── travel/        # Travel info page
+│   │   ├── synagogues/    # Synagogue list + [slug] detail
+│   │   └── education/     # Education list + [slug] detail
 │   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
 │   └── globals.css        # Design tokens
 ├── components/
 │   ├── ui/                # shadcn/ui (customized)
 │   ├── layout/            # Header, Footer, Navigation
+│   ├── sanity/            # Sanity rendering components
+│   │   ├── portable-text.tsx  # Rich text renderer
+│   │   └── sanity-image.tsx   # Image component
 │   ├── shop/              # Product cards, cart (Phase C)
 │   ├── events/            # Event cards, calendar (Phase D)
 │   └── common/            # Shared components
@@ -55,7 +64,10 @@ src/
 │   ├── lib/               # client.ts, image.ts
 │   └── structure.ts       # Studio sidebar structure
 └── lib/
-    └── utils.ts           # cn() helper for Tailwind
+    ├── utils.ts           # cn() helper for Tailwind
+    └── sanity/            # Sanity query utilities
+        ├── queries.ts     # GROQ query helpers
+        └── types.ts       # TypeScript interfaces
 ```
 
 ### Routing
@@ -219,7 +231,25 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase B In Progress (30%)**.
+See `roadmap.md` for detailed progress. Current: **Phase B In Progress (80%)**.
 
-Completed: i18n integration, Sanity CMS setup
-Next: Create content pages that fetch from Sanity.
+Completed: i18n integration, Sanity CMS setup, query infrastructure, all content pages
+Next: Additional Sanity content, preview mode, then Phase C (E-commerce).
+
+## Sanity Content Fetching Pattern
+
+```tsx
+// In a page.tsx (server component)
+import { getLocale } from "next-intl/server";
+import { getPageBySlug, getLocalizedValue, type Locale } from "@/lib/sanity";
+
+export default async function Page() {
+  const locale = (await getLocale()) as Locale;
+  const page = await getPageBySlug("history");
+
+  // Get localized content with fallback to English
+  const title = getLocalizedValue(page.title, locale);
+
+  return <h1>{title}</h1>;
+}
+```

@@ -11,7 +11,7 @@
 | Phase | Status | Progress |
 |-------|--------|----------|
 | A. Foundation | ✅ Complete | 100% |
-| B. Core Content | 🔄 In Progress | 30% |
+| B. Core Content | 🔄 In Progress | 80% |
 | C. E-commerce | 🔲 Not Started | 0% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
@@ -93,7 +93,7 @@ src/
 
 ## Phase B: Core Content 🔄
 
-**Status:** In Progress (30%)
+**Status:** In Progress (80%)
 **Started:** 2025-01-09
 
 ### Completed
@@ -112,20 +112,30 @@ src/
     - `settings` singleton
     - `address`, `serviceTime`, `seo` objects
   - [x] Studio structure with organized sections
+- [x] Query infrastructure
+  - [x] GROQ query helpers (`src/lib/sanity/queries.ts`)
+  - [x] TypeScript types (`src/lib/sanity/types.ts`)
+  - [x] PortableText component (`src/components/sanity/portable-text.tsx`)
+  - [x] SanityImage component (`src/components/sanity/sanity-image.tsx`)
+- [x] Content pages (fetch from Sanity)
+  - [x] History page (`/history`)
+  - [x] About page (`/about`)
+  - [x] Synagogues section (`/synagogues`, `/synagogues/[slug]`)
+  - [x] Education section (`/education`, `/education/[slug]`)
+  - [x] Travel Info page (`/travel`)
+  - [x] Contact page with form (`/contact`)
+- [x] Sample content created in Sanity
+  - [x] History page content (EN/HE)
+  - [x] About page content (EN/HE)
+  - [x] Maghain Aboth synagogue
+  - [x] Chesed El synagogue
 
 ### Remaining
 
 - [ ] Set up preview mode for content editors
-- [ ] Content pages (fetch from Sanity)
-  - [ ] History page
-  - [ ] About page
-  - [ ] Synagogues section (`/synagogues`, `/synagogues/[slug]`)
-  - [ ] Education section (`/education`, `/education/[slug]`)
-  - [ ] Travel Info page
-  - [ ] Contact page with form
-- [ ] Create content in Sanity
-  - [ ] Maghain Aboth synagogue
-  - [ ] Chesed El synagogue
+- [ ] Create additional content in Sanity
+  - [ ] Travel Info page content
+  - [ ] Contact page content
   - [ ] Rabbi profile
   - [ ] Youth Leader profile
   - [ ] Education programs (Ganenu, Sunday School, etc.)

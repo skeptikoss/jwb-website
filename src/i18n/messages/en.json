@@ -4,7 +4,64 @@
     "siteDescription": "Jewish Welfare Board of Singapore",
     "learnMore": "Learn More",
     "viewAll": "View All",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "backTo": "Back to {page}",
+    "contactUs": "Contact Us",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone",
+    "serviceTimes": "Service Times"
+  },
+  "pages": {
+    "history": {
+      "title": "Our History",
+      "subtitle": "Over 145 years of Jewish life in Singapore",
+      "noContent": "Content coming soon. Please check back later."
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Learn about the Jewish Welfare Board of Singapore",
+      "noContent": "Content coming soon. Please check back later."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch with the Jewish community of Singapore",
+      "noContent": "Content coming soon. Please check back later.",
+      "form": {
+        "name": "Your Name",
+        "email": "Email Address",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Send Message",
+        "success": "Thank you for your message. We'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+      }
+    },
+    "travel": {
+      "title": "Travel Information",
+      "subtitle": "Everything you need to know for your visit to Jewish Singapore",
+      "noContent": "Content coming soon. Please check back later."
+    },
+    "synagogues": {
+      "title": "Our Synagogues",
+      "subtitle": "Two historic houses of worship in the heart of Singapore",
+      "noContent": "No synagogues found.",
+      "established": "Established",
+      "viewDetails": "View Details",
+      "location": "Location",
+      "services": "Service Schedule",
+      "features": "Features & Amenities",
+      "gallery": "Photo Gallery"
+    },
+    "education": {
+      "title": "Education Programs",
+      "subtitle": "Jewish education for all ages",
+      "noContent": "No programs found.",
+      "ageRange": "Ages",
+      "schedule": "Schedule",
+      "register": "Register",
+      "contactProgram": "Contact Program"
+    }
   },
   "nav": {
     "about": "About",
