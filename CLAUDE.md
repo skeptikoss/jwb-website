@@ -231,10 +231,11 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase B Complete (100%)**.
+See `roadmap.md` for detailed progress. Current: **Phase B.1 Content Fixes (In Progress)**.
 
-Completed: i18n integration, Sanity CMS setup, query infrastructure, all content pages, Sanity content (scraped from singaporejews.com)
-Next: Phase C (E-commerce) - product schemas, shopping cart, Stripe integration.
+Completed: i18n integration, Sanity CMS setup, query infrastructure, all content pages
+In Progress: Content gaps found - missing `/leadership` route, incomplete History/Synagogue content
+Next: Complete B.1, then Phase C (E-commerce)
 
 ## Sanity Content Fetching Pattern
 
