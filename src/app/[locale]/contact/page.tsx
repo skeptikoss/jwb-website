@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { Header, Footer } from "@/components/layout";
-import { PortableTextRenderer, SanityImage } from "@/components/sanity";
+import { PortableTextRenderer } from "@/components/sanity";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";

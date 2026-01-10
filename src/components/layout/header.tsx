@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { locales, localeNames, type Locale } from "@/i18n/config";
+import { localeNames, type Locale } from "@/i18n/config";
 import { Menu, ShoppingCart, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {

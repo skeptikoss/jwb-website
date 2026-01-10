@@ -10,7 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
 import {
   ArrowLeft,
-  GraduationCap,
   Users,
   Calendar,
   Mail,

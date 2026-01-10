@@ -35,7 +35,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SynagoguesPage() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("pages.synagogues");
-  const tCommon = await getTranslations("common");
 
   // Fetch all synagogues from Sanity
   const synagogues = await getAllSynagogues();

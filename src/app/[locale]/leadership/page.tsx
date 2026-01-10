@@ -83,7 +83,6 @@ export default async function LeadershipPage() {
               <div className="grid gap-8 md:grid-cols-2">
                 {people.map((person) => {
                   const role = getLocalizedValue(person.role, locale);
-                  const categoryKey = person.category as keyof typeof t;
 
                   return (
                     <Card

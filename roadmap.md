@@ -202,6 +202,12 @@ src/
 - [x] Maghain Aboth history translated to Hebrew (11 blocks)
 - [x] Chesed El history translated to Hebrew (9 blocks)
 
+#### 6. Code Quality Cleanup (2026-01-10)
+
+- [x] Fixed ESLint error: replaced `as any` with proper `LocalizedReturnType<T>` in `types.ts`
+- [x] Removed 8 unused imports/variables across 7 files
+- [x] Build and lint now pass with 0 errors, 0 warnings
+
 ---
 
 ## Phase C: E-commerce 🔲

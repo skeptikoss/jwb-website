@@ -196,13 +196,18 @@ export interface SiteSettings extends BaseSanityDocument {
 /**
  * Get localized value with fallback to English
  */
+// Return type for getLocalizedValue based on input field type
+type LocalizedReturnType<T> = T extends LocaleBlockContent
+  ? PortableTextBlock[] | undefined
+  : string | undefined;
+
 export function getLocalizedValue<T extends LocaleString | LocaleText | LocaleBlockContent>(
   field: T | undefined,
   locale: Locale
-): T extends LocaleBlockContent ? PortableTextBlock[] | undefined : string | undefined {
-  if (!field) return undefined;
+): LocalizedReturnType<T> {
+  if (!field) return undefined as LocalizedReturnType<T>;
   // Try requested locale first, fall back to English
-  return (field[locale] ?? field.en) as any;
+  return (field[locale] ?? field.en) as LocalizedReturnType<T>;
 }
 
 /**

@@ -80,7 +80,6 @@ export default async function LeadershipDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("pages.leadership");
-  const tCommon = await getTranslations("common");
 
   // Fetch person data
   const person = await getPersonBySlug(slug);

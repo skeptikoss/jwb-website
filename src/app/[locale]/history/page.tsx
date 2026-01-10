@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { Header, Footer } from "@/components/layout";
@@ -42,7 +41,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HistoryPage() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("pages.history");
-  const tCommon = await getTranslations("common");
 
   // Fetch page content from Sanity
   const page = await getPageBySlug("history");
