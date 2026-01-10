@@ -61,10 +61,26 @@
       "schedule": "לוח זמנים",
       "register": "הרשמה",
       "contactProgram": "פנה לתוכנית"
+    },
+    "leadership": {
+      "title": "ההנהגה שלנו",
+      "subtitle": "הכירו את האנשים המסורים שמנהיגים את הקהילה שלנו",
+      "noContent": "לא נמצאו פרופילים של מנהיגים.",
+      "viewProfile": "צפה בפרופיל",
+      "backToLeadership": "חזרה להנהגה",
+      "contact": "פרטי התקשרות",
+      "biography": "ביוגרפיה",
+      "category": {
+        "clergy": "רבנים",
+        "staff": "צוות",
+        "board": "הנהלה",
+        "educator": "מחנכים"
+      }
     }
   },
   "nav": {
     "about": "אודות",
+    "leadership": "הנהגה",
     "synagogues": "בתי כנסת",
     "events": "אירועים",
     "shop": "חנות",

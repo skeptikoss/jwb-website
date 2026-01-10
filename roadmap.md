@@ -11,8 +11,8 @@
 | Phase | Status | Progress |
 |-------|--------|----------|
 | A. Foundation | ✅ Complete | 100% |
-| B. Core Content | 🔄 In Progress | 85% |
-| B.1 Content Fixes | 🔄 In Progress | 0% |
+| B. Core Content | ✅ Complete | 100% |
+| B.1 Content Fixes | ✅ Complete | 100% |
 | C. E-commerce | 🔲 Not Started | 0% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
@@ -145,101 +145,62 @@ src/
 
 ---
 
-## Phase B.1: Content Fixes 🔄
+## Phase B.1: Content Fixes ✅
 
-**Status:** In Progress
-**Issue:** Content scraped from singaporejews.com is incomplete. Frontend routes missing for people.
+**Status:** Complete
+**Completed:** 2026-01-10
 
-### 1. Missing Frontend Routes (BLOCKING)
+### Tasks Completed
 
-No pages exist to display Person documents (Rabbi, Youth Leader):
+#### 1. Frontend Routes for Leadership
 
-- [ ] Create `/leadership` or `/people` route
-  - [ ] Listing page showing all clergy/staff
-  - [ ] Detail page `/leadership/[slug]` for individual profiles
-- [ ] Add navigation link in header
-- [ ] Add i18n translations for new routes
+- [x] Created `/leadership` listing page showing all clergy/staff
+- [x] Created `/leadership/[slug]` detail page for individual profiles
+- [x] Added "Leadership" link to header navigation
+- [x] Added i18n translations (EN + HE) for leadership section
 
-**Current state:** Person documents exist in Sanity but return 404 on frontend.
+**Files created:**
+- `src/app/[locale]/leadership/page.tsx`
+- `src/app/[locale]/leadership/[slug]/page.tsx`
 
-### 2. History Page Content Gap
+#### 2. History Page Content
 
-**Sanity document:** `b9bc3d84-9cbd-40a9-815c-667e3e6c7081` (slug: `history`)
+**Sanity document:** `b9bc3d84-9cbd-40a9-815c-667e3e6c7081`
 
-Current content is ~250 words. Source has ~1500 words. Missing:
+- [x] Expanded content from ~250 words to full historical narrative
+- [x] Added: First synagogue 1840, trustees, 1931 census, WWII history
+- [x] Added: Notable figures (David Marshall, Dr. Yahya Cohen)
+- [x] Added: Modern era (Chabad, Bnei Akivah, Ganenu/SMMIS, Jacob Ballas Centre)
+- [x] Added: Hebrew translations for all new content
 
-- [ ] First synagogue in 1840 on Synagogue Street (now Financial District)
-- [ ] Trustees: Joseph Dwek Cohen, A. Solomon, Joshua M. Joshua, Manasseh Meyer
-- [ ] 1931 census: 832 Jews were largest property owners
-- [ ] WWII: Japanese invasion 1942, internment, post-war emigration
-- [ ] Notable figures: David Marshall (first chief minister), Dr. Yahya Cohen (Surgeon General)
-- [ ] Chabad students program since 2002
-- [ ] Bnei Akivah shlichot since 2012
-- [ ] Ganenu renamed to Manasseh Meyer School in 2008, expanded to primary
-- [ ] Jacob Ballas Centre details (opened 2007, facilities)
-- [ ] Oral history interview links (National Archives)
+#### 3. Maghain Aboth Synagogue
 
-**Source URL:** https://singaporejews.com/history-2
+**Sanity document:** `a56371d9-5ee0-4aba-a65c-075dc2382499`
 
-### 3. Maghain Aboth Synagogue Content Gap
-
-**Sanity document:** `a56371d9-5ee0-4aba-a65c-075dc2382499` (slug: `maghain-aboth`)
-
-Missing `history` field content:
-
-- [ ] Add full history to `history` (localeBlockContent) field:
-  - First synagogue on Synagogue Street (Boat Quay area) in 1841
-  - Trustees: Joseph Dwek, Nassim Joseph Ezra, Ezra Ezra Ezekiel
-  - Move to Waterloo Street, consecration April 4, 1878
+- [x] Added full history field (EN + HE) with 11 blocks covering:
+  - First synagogue on Synagogue Street (1841)
+  - Growth and relocation to Waterloo Street (1878)
   - Ladies gallery construction by Sir Manasseh Meyer
-  - Centenary celebrations with David Marshall, 1.8m gold Menorah
-  - National monument status February 27, 1998
-  - 125th anniversary in 2004
+  - Centenary celebrations with David Marshall
+  - National monument status (1998), 125th anniversary (2004)
+- [x] Updated service times to full schedule
 
-- [ ] Update service times to full schedule:
-  - Shacharit: 7:30am daily (8am Sunday & Public Holidays)
-  - Mincha: 6:45pm daily, followed by Arvit
-  - Shabbat Shacharit: 9:15am
-  - Shabbat Mincha: 6:15pm
+#### 4. Chesed El Synagogue
 
-**Source URL:** https://singaporejews.com/maghain-aboth-synagogues
+**Sanity document:** `a716c418-5ae3-4fd9-bc85-7f2d63800c7f`
 
-### 4. Chesed El Synagogue Content Gap
-
-**Sanity document:** `a716c418-5ae3-4fd9-bc85-7f2d63800c7f` (slug: `chesed-el`)
-
-Missing `history` field content:
-
-- [ ] Add full history to `history` (localeBlockContent) field:
-  - Sir Manasseh Meyer's story (poor immigrant → wealthy trader → knighted 1929)
-  - Built on private estate, inaugurated 1905
-  - Run by Chesed El Synagogue Settlement Trust
+- [x] Added full history field (EN + HE) with 9 blocks covering:
+  - Sir Manasseh Meyer's story (poverty to philanthropy)
+  - Synagogue founding on private estate (1905)
   - National monument status
-  - Centennial celebration in 2005
+  - Centennial celebration (2005)
+- [x] Updated service times and contact info
 
-- [ ] Update service times:
-  - Monday morning services
-  - Major holidays schedule
+#### 5. Hebrew Translations
 
-- [ ] Add tour contact: Mr. Sol Solomon 86413570
-
-**Source URL:** https://singaporejews.com/chesed-el-synagogues
-
-### 5. Hebrew Translations
-
-After updating English content:
-
-- [ ] Translate new History page content to Hebrew
-- [ ] Translate Maghain Aboth history to Hebrew
-- [ ] Translate Chesed El history to Hebrew
-
-### Technical Notes
-
-- Use Firecrawl MCP to scrape full content from source URLs
-- Sanity project ID: `r3h9xffe`, dataset: `production`
-- Use `patch_document` to update existing documents
-- Portable Text block structure: `{_key, _type: "block", style, children: [{_key, _type: "span", text}]}`
-- Hebrew content goes in `.he` field, English in `.en` field
+- [x] All History page content translated to Hebrew
+- [x] Maghain Aboth history translated to Hebrew (11 blocks)
+- [x] Chesed El history translated to Hebrew (9 blocks)
 
 ---
 

@@ -61,10 +61,26 @@
       "schedule": "Schedule",
       "register": "Register",
       "contactProgram": "Contact Program"
+    },
+    "leadership": {
+      "title": "Our Leadership",
+      "subtitle": "Meet the dedicated individuals who guide our community",
+      "noContent": "No leadership profiles found.",
+      "viewProfile": "View Profile",
+      "backToLeadership": "Back to Leadership",
+      "contact": "Contact Information",
+      "biography": "Biography",
+      "category": {
+        "clergy": "Clergy",
+        "staff": "Staff",
+        "board": "Board",
+        "educator": "Educator"
+      }
     }
   },
   "nav": {
     "about": "About",
+    "leadership": "Leadership",
     "synagogues": "Synagogues",
     "events": "Events",
     "shop": "Shop",

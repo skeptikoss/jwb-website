@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 // Navigation items with translation keys
 const navigationKeys = [
   { key: "about", href: "/about" },
+  { key: "leadership", href: "/leadership" },
   { key: "synagogues", href: "/synagogues" },
   { key: "events", href: "/events" },
   { key: "shop", href: "/shop" },

@@ -7,7 +7,7 @@
 - **Type:** Portfolio/demo project (not live client)
 - **Stack:** Next.js 16 + React 19 + Tailwind v4 + Sanity CMS + Stripe (test mode)
 - **Design:** "Heritage Meets Haven" theme with Hebrew RTL support
-- **Status:** Phase B (Core Content) in progress — see `roadmap.md`
+- **Status:** Phase B complete, Phase C (E-commerce) next — see `roadmap.md`
 - **Sanity Project ID:** `r3h9xffe`
 
 ## Key Files
@@ -37,7 +37,8 @@ src/
 │   │   ├── contact/       # Contact page with form
 │   │   ├── travel/        # Travel info page
 │   │   ├── synagogues/    # Synagogue list + [slug] detail
-│   │   └── education/     # Education list + [slug] detail
+│   │   ├── education/     # Education list + [slug] detail
+│   │   └── leadership/    # Leadership list + [slug] detail
 │   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
 │   └── globals.css        # Design tokens
@@ -231,11 +232,14 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase B.1 Content Fixes (In Progress)**.
+See `roadmap.md` for detailed progress. Current: **Phase B Complete, Phase C Next**.
 
-Completed: i18n integration, Sanity CMS setup, query infrastructure, all content pages
-In Progress: Content gaps found - missing `/leadership` route, incomplete History/Synagogue content
-Next: Complete B.1, then Phase C (E-commerce)
+Completed:
+- Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
+- Phase B: Core Content (Sanity CMS, all content pages, query infrastructure)
+- Phase B.1: Content Fixes (Leadership pages, full History/Synagogue content with Hebrew)
+
+Next: Phase C (E-commerce with Stripe)
 
 ## Sanity Content Fetching Pattern
 
