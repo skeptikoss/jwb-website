@@ -239,16 +239,15 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase C 80% Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase C 90% Complete**.
 
 Completed:
 - Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
 - Phase B: Core Content (Sanity CMS, all content pages, query infrastructure)
 - Phase B.1: Content Fixes (Leadership pages, full History/Synagogue content with Hebrew)
-- Phase C (partial): Shop pages, cart, 172 products seeded with categories
+- Phase C (partial): Shop pages, cart, 172 products seeded, 74 products with images
 
 Remaining in Phase C:
-- Product images (need to scrape from source site)
 - Stripe checkout integration
 - Order confirmation flow
 

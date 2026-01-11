@@ -43,3 +43,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 dist/
+
+# scripts data (scraped content, intermediate files)
+scripts/scrape-product-images/data/

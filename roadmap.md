@@ -13,7 +13,7 @@
 | A. Foundation | ✅ Complete | 100% |
 | B. Core Content | ✅ Complete | 100% |
 | B.1 Content Fixes | ✅ Complete | 100% |
-| C. E-commerce | 🟡 In Progress | 80% |
+| C. E-commerce | 🟡 In Progress | 90% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
 | F. Museum & Polish | 🔲 Not Started | 0% |
@@ -212,7 +212,7 @@ src/
 
 ## Phase C: E-commerce 🟡
 
-**Status:** In Progress (80%)
+**Status:** In Progress (90%)
 **Started:** 2026-01-11
 
 ### Tasks Completed
@@ -226,10 +226,14 @@ src/
 - [x] 172 products seeded with categories assigned
 - [x] Shop components (12 files): ProductCard, ProductGrid, CartDrawer, etc.
 - [x] i18n translations for shop section
+- [x] **Product images** — Scraped from source site and uploaded to Sanity
+  - **Result:** 74 of 100 products now have images (74% coverage)
+  - **How:** Built a script that scrapes images from singaporejews.com/shop, fuzzy-matches product names, and uploads to Sanity
+  - **Unmatched:** 26 products couldn't be matched due to naming differences (e.g., wines with different label formats)
+  - **To re-run or learn more:** See [`scripts/scrape-product-images/README.md`](scripts/scrape-product-images/README.md)
 
 ### Tasks Remaining
 
-- [ ] **Product images** — Need to scrape from https://singaporejews.com/shop/products/
 - [ ] Stripe checkout integration
 - [ ] Order confirmation flow
 
