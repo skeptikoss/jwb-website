@@ -12,6 +12,8 @@ import type {
   Person,
   EducationProgram,
   SiteSettings,
+  ProductCategory,
+  Product,
 } from "./types";
 
 // =============================================================================
@@ -228,6 +230,129 @@ export async function getEducationProgramSlugs(): Promise<string[]> {
     /* groq */ `*[_type == "educationProgram" && defined(slug.current)]{slug}`
   );
   return programs.map((p) => p.slug.current);
+}
+
+// =============================================================================
+// Product Category Queries
+// =============================================================================
+
+const productCategoryFields = /* groq */ `
+  _id,
+  _type,
+  _createdAt,
+  _updatedAt,
+  name,
+  slug,
+  description,
+  image,
+  order
+`;
+
+/**
+ * Get all product categories, ordered by display order
+ */
+export async function getAllCategories(): Promise<ProductCategory[]> {
+  return client.fetch(
+    /* groq */ `*[_type == "productCategory"] | order(order asc){${productCategoryFields}}`
+  );
+}
+
+/**
+ * Get a single category by slug
+ */
+export async function getCategoryBySlug(slug: string): Promise<ProductCategory | null> {
+  return client.fetch(
+    /* groq */ `*[_type == "productCategory" && slug.current == $slug][0]{${productCategoryFields}}`,
+    { slug }
+  );
+}
+
+// =============================================================================
+// Product Queries
+// =============================================================================
+
+const productFields = /* groq */ `
+  _id,
+  _type,
+  _createdAt,
+  _updatedAt,
+  name,
+  slug,
+  description,
+  price,
+  category->{
+    _id,
+    name,
+    slug
+  },
+  kashrut,
+  images,
+  sku,
+  inStock,
+  featured,
+  seo
+`;
+
+/**
+ * Get all products, optionally filtered by category slug
+ */
+export async function getAllProducts(categorySlug?: string): Promise<Product[]> {
+  if (categorySlug) {
+    return client.fetch(
+      /* groq */ `*[_type == "product" && category->slug.current == $categorySlug] | order(name.en asc){${productFields}}`,
+      { categorySlug }
+    );
+  }
+  return client.fetch(
+    /* groq */ `*[_type == "product"] | order(name.en asc){${productFields}}`
+  );
+}
+
+/**
+ * Get featured products
+ */
+export async function getFeaturedProducts(limit: number = 8): Promise<Product[]> {
+  return client.fetch(
+    /* groq */ `*[_type == "product" && featured == true] | order(name.en asc)[0...$limit]{${productFields}}`,
+    { limit }
+  );
+}
+
+/**
+ * Get a single product by slug
+ */
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  return client.fetch(
+    /* groq */ `*[_type == "product" && slug.current == $slug][0]{${productFields}}`,
+    { slug }
+  );
+}
+
+/**
+ * Get product slugs for static generation
+ */
+export async function getProductSlugs(): Promise<string[]> {
+  const products = await client.fetch<{ slug: { current: string } }[]>(
+    /* groq */ `*[_type == "product" && defined(slug.current)]{slug}`
+  );
+  return products.map((p) => p.slug.current);
+}
+
+/**
+ * Search products by name (for search functionality)
+ * Searches in both English and Hebrew names
+ */
+export async function searchProducts(query: string): Promise<Product[]> {
+  if (!query || query.length < 2) return [];
+
+  return client.fetch(
+    /* groq */ `*[_type == "product" && (
+      name.en match $searchQuery ||
+      name.he match $searchQuery ||
+      sku match $searchQuery
+    )] | order(name.en asc){${productFields}}`,
+    { searchQuery: `*${query}*` }
+  );
 }
 
 // =============================================================================

@@ -14,6 +14,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
+import { CartDrawer } from "@/components/shop/cart-drawer";
+import { useCartStore } from "@/store/cart-store";
 
 // Navigation items with translation keys
 const navigationKeys = [
@@ -33,6 +35,7 @@ export function Header() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
+  const cartItemCount = useCartStore((state) => state.getItemCount());
 
   // Switch to the other locale
   const toggleLocale = () => {
@@ -82,20 +85,22 @@ export function Header() {
           </Button>
 
           {/* Cart */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative text-charcoal hover:text-navy"
-            aria-label="Shopping cart"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <Badge
-              variant="default"
-              className="absolute -end-1 -top-1 h-5 w-5 rounded-full bg-gold p-0 text-xs text-charcoal"
+          <CartDrawer>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative text-charcoal hover:text-navy"
+              aria-label="Shopping cart"
             >
-              0
-            </Badge>
-          </Button>
+              <ShoppingCart className="h-5 w-5" />
+              <Badge
+                variant="default"
+                className="absolute -end-1 -top-1 h-5 w-5 rounded-full bg-gold p-0 text-xs text-charcoal"
+              >
+                {cartItemCount}
+              </Badge>
+            </Button>
+          </CartDrawer>
 
           {/* Donate Button */}
           <Button

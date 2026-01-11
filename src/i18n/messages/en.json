@@ -76,6 +76,69 @@
         "board": "Board",
         "educator": "Educator"
       }
+    },
+    "shop": {
+      "title": "Kosher Shop",
+      "subtitle": "Fresh kosher groceries, wine, and Judaica from Singapore's trusted community store",
+      "allProducts": "All Products",
+      "filters": "Filters",
+      "filterByCategory": "Filter by Category",
+      "clearFilters": "Clear Filters",
+      "searchPlaceholder": "Search products...",
+      "showingProducts": "Showing {count} products",
+      "noProducts": "No products found.",
+      "product": {
+        "backToShop": "Back to Shop",
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock",
+        "addToCart": "Add to Cart",
+        "added": "Added!",
+        "description": "Description",
+        "sku": "SKU"
+      },
+      "cart": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty",
+        "emptyTitle": "Your cart is empty",
+        "emptyDescription": "Looks like you haven't added any items to your cart yet. Start shopping to find kosher products for your home.",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "freeShipping": "FREE",
+        "shippingNote": "Free shipping on orders over ${threshold} SGD. Orders under ${threshold} SGD have a flat ${rate} SGD shipping fee.",
+        "total": "Total",
+        "checkout": "Proceed to Checkout",
+        "continueShopping": "Continue Shopping",
+        "startShopping": "Start Shopping",
+        "clearCart": "Clear Cart"
+      },
+      "checkout": {
+        "title": "Checkout",
+        "orderSummary": "Order Summary",
+        "contactInfo": "Contact Information",
+        "email": "Email",
+        "phone": "Phone",
+        "optional": "optional",
+        "shippingAddress": "Shipping Address",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "address": "Address",
+        "city": "City",
+        "postalCode": "Postal Code",
+        "payment": "Payment",
+        "paymentComingSoon": "Payment processing coming soon",
+        "paymentDescription": "This is a demo store. No actual payment will be processed.",
+        "completeOrder": "Complete Order",
+        "processing": "Processing...",
+        "secureCheckout": "Your information is secure and encrypted",
+        "freeShippingNote": "Add ${amount} more for free shipping!",
+        "success": {
+          "title": "Thank You!",
+          "message": "Your order has been received. In a real implementation, you would receive a confirmation email.",
+          "demoNotice": "This is a demo store for the JWB Singapore portfolio project. No actual order was placed.",
+          "continueShopping": "Continue Shopping",
+          "backToHome": "Back to Home"
+        }
+      }
     }
   },
   "nav": {

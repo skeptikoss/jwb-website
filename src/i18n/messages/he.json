@@ -76,6 +76,69 @@
         "board": "הנהלה",
         "educator": "מחנכים"
       }
+    },
+    "shop": {
+      "title": "חנות כשר",
+      "subtitle": "מצרכי מזון כשרים טריים, יין ויודאיקה מחנות הקהילה המהימנה של סינגפור",
+      "allProducts": "כל המוצרים",
+      "filters": "סינון",
+      "filterByCategory": "סינון לפי קטגוריה",
+      "clearFilters": "נקה סינון",
+      "searchPlaceholder": "חיפוש מוצרים...",
+      "showingProducts": "מציג {count} מוצרים",
+      "noProducts": "לא נמצאו מוצרים.",
+      "product": {
+        "backToShop": "חזרה לחנות",
+        "inStock": "במלאי",
+        "outOfStock": "אזל מהמלאי",
+        "addToCart": "הוסף לסל",
+        "added": "נוסף!",
+        "description": "תיאור",
+        "sku": "מק\"ט"
+      },
+      "cart": {
+        "title": "סל קניות",
+        "empty": "הסל שלך ריק",
+        "emptyTitle": "הסל שלך ריק",
+        "emptyDescription": "נראה שעדיין לא הוספת פריטים לסל. התחל לקנות כדי למצוא מוצרים כשרים לביתך.",
+        "subtotal": "סכום ביניים",
+        "shipping": "משלוח",
+        "freeShipping": "חינם",
+        "shippingNote": "משלוח חינם בהזמנות מעל {threshold} דולר סינגפורי. הזמנות מתחת ל-{threshold} דולר סינגפורי בעלות משלוח קבועה של {rate} דולר סינגפורי.",
+        "total": "סה\"כ",
+        "checkout": "המשך לתשלום",
+        "continueShopping": "המשך לקנות",
+        "startShopping": "התחל לקנות",
+        "clearCart": "רוקן סל"
+      },
+      "checkout": {
+        "title": "תשלום",
+        "orderSummary": "סיכום הזמנה",
+        "contactInfo": "פרטי התקשרות",
+        "email": "אימייל",
+        "phone": "טלפון",
+        "optional": "אופציונלי",
+        "shippingAddress": "כתובת למשלוח",
+        "firstName": "שם פרטי",
+        "lastName": "שם משפחה",
+        "address": "כתובת",
+        "city": "עיר",
+        "postalCode": "מיקוד",
+        "payment": "תשלום",
+        "paymentComingSoon": "עיבוד תשלומים בקרוב",
+        "paymentDescription": "זוהי חנות הדגמה. לא יתבצע תשלום בפועל.",
+        "completeOrder": "השלם הזמנה",
+        "processing": "מעבד...",
+        "secureCheckout": "המידע שלך מאובטח ומוצפן",
+        "freeShippingNote": "הוסף {amount} דולר למשלוח חינם!",
+        "success": {
+          "title": "תודה רבה!",
+          "message": "הזמנתך התקבלה. במימוש אמיתי, תקבל אימייל אישור.",
+          "demoNotice": "זוהי חנות הדגמה לפרויקט הפורטפוליו של JWB סינגפור. לא בוצעה הזמנה בפועל.",
+          "continueShopping": "המשך לקנות",
+          "backToHome": "חזרה לדף הבית"
+        }
+      }
     }
   },
   "nav": {

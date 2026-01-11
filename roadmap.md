@@ -13,7 +13,7 @@
 | A. Foundation | ✅ Complete | 100% |
 | B. Core Content | ✅ Complete | 100% |
 | B.1 Content Fixes | ✅ Complete | 100% |
-| C. E-commerce | 🔲 Not Started | 0% |
+| C. E-commerce | 🟡 In Progress | 80% |
 | D. Events & Booking | 🔲 Not Started | 0% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
 | F. Museum & Polish | 🔲 Not Started | 0% |
@@ -210,19 +210,88 @@ src/
 
 ---
 
-## Phase C: E-commerce 🔲
+## Phase C: E-commerce 🟡
 
-**Status:** Not Started
+**Status:** In Progress (80%)
+**Started:** 2026-01-11
 
-### Tasks
+### Tasks Completed
 
-- [ ] Product schema in Sanity
-- [ ] Product listing page with filters
-- [ ] Product detail page
-- [ ] Shopping cart (zustand or context)
+- [x] Product schema in Sanity (`product`, `productCategory`)
+- [x] Product listing page with filters (`/shop`)
+- [x] Product detail page (`/shop/[slug]`)
+- [x] Shopping cart with Zustand (`src/store/cart-store.ts`)
+- [x] Category filtering and search
+- [x] 10 product categories created in Sanity
+- [x] 172 products seeded with categories assigned
+- [x] Shop components (12 files): ProductCard, ProductGrid, CartDrawer, etc.
+- [x] i18n translations for shop section
+
+### Tasks Remaining
+
+- [ ] **Product images** — Need to scrape from https://singaporejews.com/shop/products/
 - [ ] Stripe checkout integration
 - [ ] Order confirmation flow
-- [ ] Scrape product data (50-100 items from Elite Kosher Mart)
+
+### Files Created
+
+```
+src/
+├── app/[locale]/shop/
+│   ├── page.tsx              # Shop listing with filters
+│   ├── [slug]/page.tsx       # Product detail
+│   ├── cart/page.tsx         # Cart page
+│   ├── checkout/page.tsx     # Checkout (placeholder)
+│   └── confirmation/page.tsx # Order confirmation (placeholder)
+├── components/shop/
+│   ├── product-card.tsx
+│   ├── product-grid.tsx
+│   ├── product-filters.tsx
+│   ├── category-filter.tsx
+│   ├── search-input.tsx
+│   ├── sort-select.tsx
+│   ├── price-display.tsx
+│   ├── kashrut-badge.tsx
+│   ├── add-to-cart-button.tsx
+│   ├── cart-drawer.tsx
+│   ├── cart-item.tsx
+│   └── index.ts
+├── store/
+│   └── cart-store.ts         # Zustand cart state
+├── hooks/
+│   └── use-cart.ts           # Cart hook
+└── sanity/schemaTypes/documents/
+    ├── product.ts
+    └── productCategory.ts
+scripts/
+└── assign-product-categories.ts  # Bulk category assignment script
+```
+
+### Product Categories (10)
+
+| Category | Products |
+|----------|----------|
+| Wine & Beverages | Wines, grape juice, coffee, arak |
+| Dairy & Chilled | Cheese, cream, fromage |
+| Frozen Food | Borekas, gefilte fish, ice cream cones |
+| Canned & Preserved | Olives, tuna, peppers, preserved vegetables |
+| Condiments & Spices | Tahini, sauces, spices, spreads |
+| Snacks & Confectionery | Halva, mentos |
+| Cookies & Biscuits | Wafers, cookies, bagels, cakes |
+| Bread & Bakery | Matzah, bread |
+| Grains & Pasta | Couscous, breadcrumbs, wheat |
+| Judaica | Candles, mezuzahs, dreidels, body care |
+
+### Next Step: Product Images
+
+Products currently have no images. To add images from the source site:
+
+1. Scrape product images from `https://singaporejews.com/shop/products/`
+2. Match products by name (fuzzy matching)
+3. Download images and upload to Sanity Assets API
+4. Patch products with image references
+
+See `scripts/assign-product-categories.ts` for the pattern to follow.
 
 ---
 
@@ -299,6 +368,72 @@ src/
 | 2025-01-08 | Color Format | OKLCH | Tailwind v4 default, perceptually uniform |
 | 2025-01-09 | Sanity Studio | Embedded at `/studio` | Single deployment, shared config, simpler DevOps |
 | 2025-01-09 | Localization | Field-level (not document) | Keeps translations synchronized, easier tracking |
+| 2026-01-11 | Cart State | Zustand | Simple, minimal boilerplate, persists to localStorage |
+| 2026-01-11 | Bulk Sanity Operations | Scripts over MCP | See "Bulk Operations Pattern" below |
+
+---
+
+## Bulk Operations Pattern
+
+**Important:** For bulk Sanity operations (creating/updating many documents), always prefer **scripts** over individual MCP tool calls.
+
+### Why Scripts Beat MCP for Bulk Operations
+
+| Approach | 100 Documents | Context Usage | Atomic |
+|----------|---------------|---------------|--------|
+| MCP one-by-one | 100 tool calls | ~50,000 tokens | No |
+| Script with transaction | 1 bash command | ~500 tokens | Yes |
+
+### When to Use Each
+
+| Task | Approach |
+|------|----------|
+| Query/read operations | MCP tools (fine for any quantity) |
+| Create/update 1-5 documents | MCP tools |
+| Create/update 10+ documents | Write a script |
+| Bulk mutations with logic | Write a script |
+
+### Script Pattern
+
+See `scripts/assign-product-categories.ts` for the recommended pattern:
+
+```typescript
+import { createClient } from "@sanity/client";
+
+const client = createClient({
+  projectId: "r3h9xffe",
+  dataset: "production",
+  apiVersion: "2024-01-01",
+  useCdn: false,
+  token: process.env.SANITY_API_TOKEN, // Write token required
+});
+
+async function main() {
+  // 1. Query documents that need updating
+  const docs = await client.fetch(`*[_type == "product" && !defined(field)]`);
+
+  // 2. Build a transaction (atomic batch)
+  const transaction = client.transaction();
+  for (const doc of docs) {
+    transaction.patch(doc._id, { set: { field: value } });
+  }
+
+  // 3. Commit all changes at once
+  await transaction.commit();
+}
+
+main().catch(console.error);
+```
+
+Run with: `SANITY_API_TOKEN=xxx npx tsx scripts/your-script.ts`
+
+### Getting a Sanity Write Token
+
+1. Go to https://www.sanity.io/manage/project/r3h9xffe
+2. Navigate to **API** → **Tokens**
+3. Click **Add API Token**
+4. Set permissions to **Editor**
+5. Copy and use as environment variable
 
 ---
 

@@ -163,6 +163,57 @@ export interface EducationProgram extends BaseSanityDocument {
 }
 
 /**
+ * Product category document
+ */
+export interface ProductCategory extends BaseSanityDocument {
+  _type: "productCategory";
+  name: LocaleString;
+  slug: SanitySlug;
+  description?: LocaleText;
+  image?: SanityImage;
+  order?: number;
+}
+
+/**
+ * Kashrut certification types
+ */
+export type KashrutCertification =
+  | "OU"
+  | "OK"
+  | "Star-K"
+  | "Kof-K"
+  | "Singapore-Rabbinate"
+  | "CRC"
+  | "Badatz"
+  | "Other";
+
+/**
+ * Product document
+ */
+export interface Product extends BaseSanityDocument {
+  _type: "product";
+  name: LocaleString;
+  slug: SanitySlug;
+  description?: LocaleBlockContent;
+  price: number;
+  category?: ProductCategory;
+  kashrut?: KashrutCertification;
+  images?: SanityImage[];
+  sku?: string;
+  inStock?: boolean;
+  featured?: boolean;
+  seo?: SEO;
+}
+
+/**
+ * Cart item for Zustand store (includes quantity)
+ */
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+/**
  * Site settings singleton
  */
 export interface SiteSettings extends BaseSanityDocument {

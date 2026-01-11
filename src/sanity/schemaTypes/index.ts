@@ -13,6 +13,8 @@ import { pageType } from "./documents/page";
 import { synagogueType } from "./documents/synagogue";
 import { personType } from "./documents/person";
 import { educationProgramType } from "./documents/educationProgram";
+import { productCategoryType } from "./documents/productCategory";
+import { productType } from "./documents/product";
 
 // Singleton types
 import { settingsType } from "./singletons/settings";
@@ -34,6 +36,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     synagogueType,
     personType,
     educationProgramType,
+    productCategoryType,
+    productType,
 
     // Singletons
     settingsType,

@@ -1,5 +1,5 @@
 import type { StructureResolver } from "sanity/structure";
-import { Settings, FileText, Building2, User, GraduationCap } from "lucide-react";
+import { Settings, FileText, Building2, User, GraduationCap, ShoppingBag, Tags } from "lucide-react";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -128,6 +128,54 @@ export const structure: StructureResolver = (S) =>
                   S.documentList()
                     .title("Youth Programs")
                     .filter('_type == "educationProgram" && type == "youth"')
+                ),
+            ])
+        ),
+
+      S.divider(),
+
+      // Shop
+      S.listItem()
+        .title("Shop")
+        .icon(ShoppingBag)
+        .child(
+          S.list()
+            .title("Shop")
+            .items([
+              S.listItem()
+                .title("All Products")
+                .icon(ShoppingBag)
+                .schemaType("product")
+                .child(
+                  S.documentTypeList("product")
+                    .title("All Products")
+                    .defaultOrdering([{ field: "name.en", direction: "asc" }])
+                ),
+              S.listItem()
+                .title("Categories")
+                .icon(Tags)
+                .schemaType("productCategory")
+                .child(
+                  S.documentTypeList("productCategory")
+                    .title("Categories")
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                ),
+              S.divider(),
+              S.listItem()
+                .title("Featured Products")
+                .icon(ShoppingBag)
+                .child(
+                  S.documentList()
+                    .title("Featured Products")
+                    .filter('_type == "product" && featured == true')
+                ),
+              S.listItem()
+                .title("Out of Stock")
+                .icon(ShoppingBag)
+                .child(
+                  S.documentList()
+                    .title("Out of Stock")
+                    .filter('_type == "product" && inStock == false')
                 ),
             ])
         ),
