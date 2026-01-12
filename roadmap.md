@@ -18,6 +18,7 @@
 | D. Events & Booking | 🟡 In Progress | 60% |
 | D.1 Restaurant & Museum Pages | ✅ Complete | 100% |
 | D.2 UI Polish | ✅ Complete | 100% |
+| D.3 Additional Pages | ✅ Complete | 100% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
 | F. Polish & Optimization | 🔲 Not Started | 0% |
 | G. Launch Preparation | 🔲 Not Started | 0% |
@@ -472,6 +473,54 @@ public/
 
 ---
 
+## Phase D.3: Additional Pages ✅
+
+**Status:** Complete
+**Completed:** 2026-01-13
+
+### Tasks Completed
+
+- [x] Youth/Kids Programs page (`/youth`)
+  - Program overview with activities (Shabbat meals, social events, holiday programs)
+  - Regular programs section (Ktantanim, VIP Girls Club, JLI for Teens)
+  - CTA linking to events and contact
+- [x] Genizah Project page (`/genizah`)
+  - Heritage project documenting ~700 religious books from early Jewish settlers
+  - Collection highlights (prayer books, Kabbalah, historical texts)
+  - Notable discoveries (Rabbi Farhi collection, David Marshall dedication, Oxford prayer books)
+  - Research team info with link to Shalom Point
+- [x] Mikvah page (`/mikvah`)
+  - Men's mikvah: 2nd floor JBC, daily 7am-12pm, $5-10
+  - Women's mikvah: ground floor JBC, by appointment, $20
+  - Contact numbers for appointments
+  - Family Purity classes info
+- [x] Footer restructured
+  - Removed "The Rabbi" link (now "Leadership" → `/leadership`)
+  - Removed "Service Times" link (redundant with Synagogues)
+  - Added "Genizah Project" to Community section
+  - Added "Mikvah" to Synagogues section
+  - Programs section: Events, Ganenu, SMMIS, Sunday School, Youth/Kids
+- [x] Full i18n support (EN + HE) for all new pages
+
+### Files Created
+
+```
+src/app/[locale]/
+├── youth/page.tsx            # Youth & Kids programs
+├── genizah/page.tsx          # Singapore Genizah Project
+└── mikvah/page.tsx           # Mikvah facilities info
+```
+
+### Files Modified
+
+```
+src/components/layout/footer.tsx  # Restructured footer links
+src/i18n/messages/en.json         # Added translations for 3 new pages
+src/i18n/messages/he.json         # Added Hebrew translations
+```
+
+---
+
 ## Phase E: Member Portal & Donations 🔲
 
 **Status:** Not Started
@@ -536,6 +585,8 @@ public/
 | 2026-01-12 | Navigation structure | Dropdown menus | "About" and "Visit" dropdowns with shadcn NavigationMenu |
 | 2026-01-12 | Education cards | Icon headers (no images) | Colored headers with program-type icons; cleaner than placeholder images |
 | 2026-01-12 | Events data source | Sync from live site | 2026 events only; script-based sync with real data from singaporejews.com |
+| 2026-01-13 | Additional pages | Static pages | Youth, Genizah, Mikvah as static pages with i18n; content from singaporejews.com |
+| 2026-01-13 | Footer structure | Reorganized links | Removed redundant links, added new pages, grouped by category |
 
 ---
 

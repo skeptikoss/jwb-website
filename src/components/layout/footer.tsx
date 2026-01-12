@@ -9,20 +9,21 @@ const footerLinks = {
   community: [
     { key: "aboutUs", href: "/about" },
     { key: "history", href: "/history" },
-    { key: "theRabbi", href: "/about/rabbi" },
+    { key: "genizah", href: "/genizah" },
     { key: "contact", href: "/contact" },
   ],
   synagogues: [
     { key: "maghainAboth", href: "/synagogues/maghain-aboth" },
     { key: "chesedEl", href: "/synagogues/chesed-el" },
-    { key: "serviceTimes", href: "/services" },
+    { key: "mikvah", href: "/mikvah" },
     { key: "travelInfo", href: "/travel" },
   ],
   programs: [
     { key: "events", href: "/events" },
-    { key: "education", href: "/education" },
     { key: "ganenuPreschool", href: "/education/ganenu" },
-    { key: "youthPrograms", href: "/education/youth" },
+    { key: "smmis", href: "/education/smmis" },
+    { key: "sundaySchool", href: "/education/sunday-school" },
+    { key: "youthKids", href: "/youth" },
   ],
   visit: [
     { key: "museum", href: "/museum" },

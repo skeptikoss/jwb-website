@@ -170,6 +170,158 @@
         "synagogues": "Historic Synagogues"
       }
     },
+    "genizah": {
+      "title": "Singapore Genizah Project",
+      "subtitle": "A collaborative effort to gather, catalog, and preserve religious books and texts brought by the first generations of Jews to Singapore",
+      "badge": "Heritage Project",
+      "about": {
+        "title": "About the Project",
+        "description": "The Singapore Genizah project is a collaborative effort to gather, find, and catalog religious books and texts brought by the first generations of Jews to Singapore. The project started in August 2022 and has since uncovered approximately 700 books of immense historical value.",
+        "history": "The first Jews arrived in Singapore in the early 19th century, mainly from Iraq and India. Prominent families included the Sassoon, Benjamin, Reuven, Meyer, Elias, Ezekiel, Frankel, Ellison and Manasseh families.",
+        "discovery": {
+          "title": "Discovery of the Genizah",
+          "description": "While attending an evening service at the Maghain Aboth Synagogue, researcher Mordy Miller found an old book printed in Baghdad in the early 19th century containing handwritten notes about the Jews who used it. This discovery led to the systematic collection effort.",
+          "leader": "Led by Israeli scholar Mordy Miller"
+        }
+      },
+      "collection": {
+        "title": "The Collection",
+        "description": "To date, the team has gathered approximately 700 books from the Maghain Aboth and Chesed El synagogues.",
+        "prayerBooks": {
+          "title": "Prayer Books",
+          "description": "Siddurim for holidays and high holidays, poetry and songbooks"
+        },
+        "kabbalah": {
+          "title": "Kabbalah & Halacha",
+          "description": "Including the Zohar and various Halachic texts"
+        },
+        "historical": {
+          "title": "Historical Texts",
+          "description": "Earliest books dating to 1833 from Italy"
+        },
+        "origins": {
+          "title": "Global Origins",
+          "description": "Books from Baghdad, Livorno, Bombay, Calcutta, London, and Warsaw"
+        }
+      },
+      "discoveries": {
+        "title": "Notable Discoveries",
+        "description": "The project has uncovered numerous significant items shedding light on Jewish history across the region.",
+        "farhi": {
+          "title": "Rabbi Isaac Farhi Collection",
+          "description": "Books printed by Rabbi Isaac Farhi (1779-1853), providing insight into his journey around the globe in his final years."
+        },
+        "marshall": {
+          "title": "David Marshall Dedication",
+          "description": "A book dedicated to David Marshall, Singapore's first Chief Minister and champion of independence."
+        },
+        "oxford": {
+          "title": "Oxford Prayer Books",
+          "description": "Prayer books printed at Oxford University by Professor Moses Gaster, including prayers for the British royal family."
+        },
+        "israel": {
+          "title": "Israel Independence",
+          "description": "A book printed in Livorno in 1948 with the Magen David symbol celebrating the establishment of the State of Israel."
+        }
+      },
+      "team": {
+        "title": "Research Team",
+        "description": "The Singapore Genizah project is led by Mordy Miller with support from NTU researchers, community volunteers, and the Jewish Welfare Board. A comprehensive book about the project and its findings is currently in development.",
+        "visitMuseum": "Visit the Museum",
+        "shalomPoint": "Shalom Point"
+      }
+    },
+    "mikvah": {
+      "title": "Mikvah",
+      "subtitle": "Ritual immersion facilities for men and women at the Jacob Ballas Centre",
+      "badge": "Facilities",
+      "about": {
+        "title": "Our Mikvah Facilities",
+        "description": "The Jewish community of Singapore maintains separate mikvah facilities for men and women at the Jacob Ballas Centre on Waterloo Street."
+      },
+      "mens": {
+        "title": "Men's Mikvah",
+        "location": "Location",
+        "locationDetail": "Second level of the Jacob Ballas Centre",
+        "hours": "Hours",
+        "hoursDetail": "Daily, 7:00 AM – 12:00 PM",
+        "cost": "Cost",
+        "costWeekday": "$5 SGD – Weekdays",
+        "costFriday": "$10 SGD – Friday Afternoon",
+        "keyNote": "The key is available at the Kosher Shop."
+      },
+      "womens": {
+        "title": "Women's Mikvah",
+        "location": "Location",
+        "locationDetail": "Ground floor of the Jacob Ballas Centre",
+        "appointment": "Appointments",
+        "appointmentDetail": "By appointment only. Please call to schedule.",
+        "cost": "Cost",
+        "costDetail": "$20 SGD per visit (for facility upkeep)",
+        "contacts": "Contact for Appointments"
+      },
+      "classes": {
+        "title": "Family Purity Classes",
+        "description": "Personal classes on Family Purity (Taharat HaMishpacha) are available upon request. Contact Simcha or Odelia for more information.",
+        "cta": "Contact Us"
+      },
+      "location": {
+        "title": "Jacob Ballas Centre",
+        "address": "24 Waterloo Street, Singapore 187950 (Adjacent to Maghain Aboth Synagogue)",
+        "directions": "Get Directions"
+      }
+    },
+    "youth": {
+      "title": "Youth & Kids Programs",
+      "subtitle": "Building friendships and Jewish identity through engaging activities for young people of all ages",
+      "badge": "Youth Programs",
+      "about": {
+        "title": "About Our Youth Programs",
+        "description": "Our Youth Activities are designed to provide an opportunity to establish friendships with youth from different backgrounds.",
+        "mission": "From joyous Shabbat meals together to various social activities, these events are meant to stimulate their intellectual, ethical and social development."
+      },
+      "activities": {
+        "title": "What We Offer",
+        "shabbat": {
+          "title": "Shabbat Meals",
+          "description": "Join us for warm, communal Shabbat dinners where young people can connect and celebrate together."
+        },
+        "social": {
+          "title": "Social Events",
+          "description": "Regular gatherings, outings, and activities designed to build lasting friendships."
+        },
+        "holiday": {
+          "title": "Holiday Programs",
+          "description": "Special celebrations for Jewish holidays with age-appropriate activities and learning."
+        },
+        "community": {
+          "title": "Community Service",
+          "description": "Opportunities to give back and develop a sense of responsibility to the wider community."
+        }
+      },
+      "programs": {
+        "title": "Regular Programs",
+        "description": "We offer several recurring programs for different age groups:",
+        "ktantanim": {
+          "title": "Ktantanim",
+          "description": "Weekly program for young children with songs, stories, and fun activities."
+        },
+        "vipGirls": {
+          "title": "VIP Girls Club",
+          "description": "Empowering program for girls with creative activities and Jewish learning."
+        },
+        "jli": {
+          "title": "JLI for Teens",
+          "description": "Jewish Learning Institute courses designed specifically for teenagers."
+        }
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Check our events calendar for upcoming youth activities or contact us to learn more about programs for your children.",
+        "viewEvents": "View Upcoming Events",
+        "contact": "Contact Us"
+      }
+    },
     "restaurant": {
       "title": "Awafi Restaurant",
       "subtitle": "Singapore's kosher restaurant serving a diverse menu of international cuisines in a warm, welcoming atmosphere",
@@ -338,16 +490,18 @@
     "links": {
       "aboutUs": "About Us",
       "history": "History",
-      "theRabbi": "The Rabbi",
+      "genizah": "Genizah Project",
+      "leadership": "Leadership",
       "contact": "Contact",
       "maghainAboth": "Maghain Aboth",
       "chesedEl": "Chesed El",
-      "serviceTimes": "Service Times",
+      "mikvah": "Mikvah",
       "travelInfo": "Travel Info",
       "events": "Events",
-      "education": "Education",
       "ganenuPreschool": "Ganenu Preschool",
-      "youthPrograms": "Youth Programs",
+      "sundaySchool": "Sunday School",
+      "smmis": "SMMIS",
+      "youthKids": "Youth/Kids",
       "museum": "Museum",
       "restaurant": "Restaurant",
       "shop": "Shop",

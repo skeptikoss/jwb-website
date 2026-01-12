@@ -42,6 +42,9 @@ src/
 │   │   ├── events/        # Events list + [slug] detail
 │   │   ├── restaurant/    # Awafi Restaurant info page
 │   │   ├── museum/        # Jews of Singapore Museum page
+│   │   ├── youth/         # Youth & Kids Programs page
+│   │   ├── genizah/       # Singapore Genizah Project page
+│   │   ├── mikvah/        # Mikvah facilities page
 │   │   └── shop/          # Shop list, [slug] detail, cart, checkout
 │   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
@@ -243,7 +246,7 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase D 60% Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase D.3 Complete**.
 
 Completed:
 - Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
@@ -254,6 +257,7 @@ Completed:
 - Phase D (partial): Events schema, listing/detail pages, 6 sample events
 - Phase D.1: Restaurant page, Museum page, footer navigation
 - Phase D.2: UI Polish (logo, favicon, dynamic homepage synagogues)
+- Phase D.3: Additional pages (Youth, Genizah, Mikvah), footer navigation fixes
 
 Remaining:
 - Phase C: Stripe checkout integration, order confirmation
