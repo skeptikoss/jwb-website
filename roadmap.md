@@ -14,9 +14,11 @@
 | B. Core Content | ✅ Complete | 100% |
 | B.1 Content Fixes | ✅ Complete | 100% |
 | C. E-commerce | 🟡 In Progress | 90% |
-| D. Events & Booking | 🔲 Not Started | 0% |
+| C.1 Community Photos | ✅ Complete | 100% |
+| D. Events & Booking | 🟡 In Progress | 60% |
+| D.1 Restaurant & Museum Pages | ✅ Complete | 100% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
-| F. Museum & Polish | 🔲 Not Started | 0% |
+| F. Polish & Optimization | 🔲 Not Started | 0% |
 | G. Launch Preparation | 🔲 Not Started | 0% |
 
 ---
@@ -299,19 +301,116 @@ See `scripts/assign-product-categories.ts` for the pattern to follow.
 
 ---
 
-## Phase D: Events & Booking 🔲
+## Phase C.1: Community Photos ✅
 
-**Status:** Not Started
+**Status:** Complete
+**Completed:** 2026-01-12
 
-### Tasks
+### Tasks Completed
 
-- [ ] Event schema in Sanity
-- [ ] Events listing with calendar view
-- [ ] Event detail page
+- [x] Leadership photos uploaded to Sanity
+  - Rabbi Mordechai Abergel photo
+  - Rabbi Netanel Rivni photo
+- [x] Synagogue photos uploaded to Sanity
+  - Maghain Aboth: main image + 1 gallery image
+  - Chesed El: main image + 1 gallery image
+- [x] Upload script created (`scripts/upload-community-photos.ts`)
+
+### Files Created
+
+```
+scripts/
+└── upload-community-photos.ts   # Downloads images and patches Sanity documents
+```
+
+---
+
+## Phase D: Events & Booking 🟡
+
+**Status:** In Progress (60%)
+**Started:** 2026-01-12
+
+### Tasks Completed
+
+- [x] Event schema in Sanity (`src/sanity/schemaTypes/documents/event.ts`)
+- [x] Events listing page (`/events`)
+- [x] Event detail page (`/events/[slug]`)
+- [x] Event types with color-coded badges (community, youth, education, holiday, shabbat, sports)
+- [x] 6 sample events seeded and published
+- [x] i18n translations (EN + HE)
+- [x] Event queries in `src/lib/sanity/queries.ts`
+- [x] Event TypeScript types in `src/lib/sanity/types.ts`
+
+### Tasks Remaining
+
 - [ ] RSVP/booking flow
 - [ ] Shabbat meal reservations
 - [ ] Stripe integration for paid events
 - [ ] Email confirmations (mock for demo)
+- [ ] Calendar view (optional enhancement)
+
+### Files Created
+
+```
+src/
+├── app/[locale]/events/
+│   ├── page.tsx              # Events listing with type badges
+│   └── [slug]/page.tsx       # Event detail with registration link
+├── sanity/schemaTypes/documents/
+│   └── event.ts              # Event schema with localization
+└── lib/sanity/
+    ├── queries.ts            # Added event queries
+    └── types.ts              # Added Event, EventType types
+```
+
+### Sample Events Seeded
+
+| Event | Type | Recurring |
+|-------|------|-----------|
+| JLI Learning for Teens | Education | Yes (Thursdays) |
+| Sunday Football | Sports | Yes (Sundays) |
+| VIP Girls Club | Youth | Yes (Monthly) |
+| Krav Maga for Ladies | Sports | Yes (Tuesdays) |
+| Tu B'Shvat Celebration | Holiday | No |
+| Community Purim Party | Holiday | No (Free) |
+
+---
+
+## Phase D.1: Restaurant & Museum Pages ✅
+
+**Status:** Complete
+**Completed:** 2026-01-12
+
+### Tasks Completed
+
+- [x] Restaurant page (`/restaurant`) - Awafi Restaurant info
+  - Opening hours, contact info, kashrut certification
+  - Multi-cuisine display (Indian, Middle Eastern, Chinese, Western)
+  - Shabbat meal reservation CTA
+- [x] Museum page (`/museum`) - Jews of Singapore Museum
+  - Exhibit highlights with icons
+  - Notable figures section
+  - Visit info and tour booking CTA
+- [x] Footer updated with Restaurant link (under "Visit & Support")
+- [x] Navigation translations added
+- [x] Full i18n support (EN + HE)
+
+### Files Created
+
+```
+src/app/[locale]/
+├── restaurant/page.tsx       # Awafi Restaurant info page
+└── museum/page.tsx           # Jews of Singapore Museum page
+```
+
+### Footer Links Updated
+
+Added to "Visit & Support" section:
+- Museum → `/museum`
+- **Restaurant** → `/restaurant` (new)
+- Shop → `/shop`
+- Donate → `/donate`
+- Member Portal → `/member`
 
 ---
 
@@ -331,18 +430,18 @@ See `scripts/assign-product-categories.ts` for the pattern to follow.
 
 ---
 
-## Phase F: Museum & Polish 🔲
+## Phase F: Polish & Optimization 🔲
 
 **Status:** Not Started
 
 ### Tasks
 
-- [ ] Museum section design
-- [ ] Exhibit/timeline pages
-- [ ] Photo galleries
 - [ ] SEO optimization
 - [ ] Performance audit (Lighthouse 90+)
 - [ ] Accessibility audit (WCAG 2.1 AA)
+- [ ] Photo galleries enhancement
+- [ ] Museum exhibit/timeline pages (optional expansion)
+- [ ] Preview mode for content editors (optional)
 
 ---
 
@@ -374,6 +473,9 @@ See `scripts/assign-product-categories.ts` for the pattern to follow.
 | 2025-01-09 | Localization | Field-level (not document) | Keeps translations synchronized, easier tracking |
 | 2026-01-11 | Cart State | Zustand | Simple, minimal boilerplate, persists to localStorage |
 | 2026-01-11 | Bulk Sanity Operations | Scripts over MCP | See "Bulk Operations Pattern" below |
+| 2026-01-12 | Events pricing model | Single price + priceNote | Simple approach; priceNote handles variants like "Kids $15, Adults $25" |
+| 2026-01-12 | Restaurant/Museum pages | Static pages (not CMS) | Quick implementation; can migrate to Sanity later if needed |
+| 2026-01-12 | Navigation structure | Minimal changes | Keep flat header; Restaurant added to footer only |
 
 ---
 

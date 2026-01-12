@@ -14,6 +14,8 @@ import type {
   SiteSettings,
   ProductCategory,
   Product,
+  Event,
+  EventType,
 } from "./types";
 
 // =============================================================================
@@ -352,6 +354,98 @@ export async function searchProducts(query: string): Promise<Product[]> {
       sku match $searchQuery
     )] | order(name.en asc){${productFields}}`,
     { searchQuery: `*${query}*` }
+  );
+}
+
+// =============================================================================
+// Event Queries
+// =============================================================================
+
+const eventFields = /* groq */ `
+  _id,
+  _type,
+  _createdAt,
+  _updatedAt,
+  name,
+  slug,
+  eventType,
+  description,
+  date,
+  endDate,
+  isRecurring,
+  recurringSchedule,
+  location,
+  price,
+  priceNote,
+  mainImage,
+  registrationLink,
+  organizer,
+  capacity,
+  seo
+`;
+
+/**
+ * Get all upcoming events, optionally filtered by type
+ * Returns events where date >= now, ordered by date ascending
+ */
+export async function getAllEvents(eventType?: EventType): Promise<Event[]> {
+  const now = new Date().toISOString();
+
+  if (eventType) {
+    return client.fetch(
+      /* groq */ `*[_type == "event" && eventType == $eventType && date >= $now] | order(date asc){${eventFields}}`,
+      { eventType, now }
+    );
+  }
+  return client.fetch(
+    /* groq */ `*[_type == "event" && date >= $now] | order(date asc){${eventFields}}`,
+    { now }
+  );
+}
+
+/**
+ * Get all events (including past) for admin/archive purposes
+ */
+export async function getAllEventsIncludingPast(eventType?: EventType): Promise<Event[]> {
+  if (eventType) {
+    return client.fetch(
+      /* groq */ `*[_type == "event" && eventType == $eventType] | order(date desc){${eventFields}}`,
+      { eventType }
+    );
+  }
+  return client.fetch(
+    /* groq */ `*[_type == "event"] | order(date desc){${eventFields}}`
+  );
+}
+
+/**
+ * Get a single event by slug
+ */
+export async function getEventBySlug(slug: string): Promise<Event | null> {
+  return client.fetch(
+    /* groq */ `*[_type == "event" && slug.current == $slug][0]{${eventFields}}`,
+    { slug }
+  );
+}
+
+/**
+ * Get event slugs for static generation
+ */
+export async function getEventSlugs(): Promise<string[]> {
+  const events = await client.fetch<{ slug: { current: string } }[]>(
+    /* groq */ `*[_type == "event" && defined(slug.current)]{slug}`
+  );
+  return events.map((e) => e.slug.current);
+}
+
+/**
+ * Get featured/upcoming events (limited, for homepage)
+ */
+export async function getUpcomingEvents(limit: number = 4): Promise<Event[]> {
+  const now = new Date().toISOString();
+  return client.fetch(
+    /* groq */ `*[_type == "event" && date >= $now] | order(date asc)[0...$limit]{${eventFields}}`,
+    { now, limit }
   );
 }
 

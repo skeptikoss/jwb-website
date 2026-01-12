@@ -26,6 +26,7 @@ const footerLinks = {
   ],
   visit: [
     { key: "museum", href: "/museum" },
+    { key: "restaurant", href: "/restaurant" },
     { key: "shop", href: "/shop" },
     { key: "donate", href: "/donate" },
     { key: "memberPortal", href: "/member" },

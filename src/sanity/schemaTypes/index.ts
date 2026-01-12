@@ -15,6 +15,7 @@ import { personType } from "./documents/person";
 import { educationProgramType } from "./documents/educationProgram";
 import { productCategoryType } from "./documents/productCategory";
 import { productType } from "./documents/product";
+import { eventType } from "./documents/event";
 
 // Singleton types
 import { settingsType } from "./singletons/settings";
@@ -38,6 +39,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     educationProgramType,
     productCategoryType,
     productType,
+    eventType,
 
     // Singletons
     settingsType,

@@ -62,6 +62,32 @@
       "register": "Register",
       "contactProgram": "Contact Program"
     },
+    "events": {
+      "title": "Events",
+      "subtitle": "Community gatherings, educational programs, and special celebrations",
+      "noEvents": "No upcoming events scheduled.",
+      "checkBack": "Check back soon for new events!",
+      "recurring": "Recurring",
+      "free": "Free",
+      "capacity": "Capacity",
+      "spots": "spots",
+      "eventDetails": "Event Details",
+      "date": "Date",
+      "time": "Time",
+      "location": "Location",
+      "price": "Price",
+      "organizer": "Organizer",
+      "register": "Register / RSVP",
+      "noDescription": "More details coming soon.",
+      "eventType": {
+        "community": "Community",
+        "youth": "Youth",
+        "education": "Education",
+        "holiday": "Holiday",
+        "shabbat": "Shabbat",
+        "sports": "Sports"
+      }
+    },
     "leadership": {
       "title": "Our Leadership",
       "subtitle": "Meet the dedicated individuals who guide our community",
@@ -75,6 +101,108 @@
         "staff": "Staff",
         "board": "Board",
         "educator": "Educator"
+      }
+    },
+    "museum": {
+      "title": "Jews of Singapore Museum",
+      "subtitle": "Discover the rich history and enduring legacy of Singapore's Jewish community through our immersive exhibits and archives",
+      "badge": {
+        "history": "Since 1830s",
+        "heritage": "Living Heritage"
+      },
+      "about": {
+        "title": "About the Museum",
+        "description": "The Jews of Singapore Museum chronicles the remarkable journey of the Jewish community from their arrival as Iraqi-Jewish traders in the 1830s to their significant contributions in shaping modern Singapore. Our collection preserves and celebrates this unique heritage for future generations.",
+        "mission": "Through photographs, documents, artifacts, and personal stories, we illuminate the lives of early Jewish settlers and their descendants who became integral to Singapore's development as a trading hub and independent nation."
+      },
+      "exhibits": {
+        "title": "Exhibit Highlights",
+        "pioneers": {
+          "title": "Early Settlers & Pioneers",
+          "description": "Learn about the Baghdad-born traders who established Singapore's first Jewish community in the 1830s."
+        },
+        "commerce": {
+          "title": "Commerce & Trade",
+          "description": "Explore how Jewish merchants shaped Singapore's early economy through international trade networks."
+        },
+        "heritage": {
+          "title": "Religious Heritage",
+          "description": "Discover the establishment of synagogues, cemeteries, and religious institutions that anchored community life."
+        },
+        "community": {
+          "title": "Community Life",
+          "description": "Experience the social fabric, traditions, and cultural events that united the Jewish community."
+        }
+      },
+      "figures": {
+        "title": "Notable Figures",
+        "description": "Our exhibits honor the Jewish pioneers who left an indelible mark on Singapore's history:",
+        "sassoon": "The Sassoon family — pioneering traders who established major commercial enterprises",
+        "menasseh": "Menasseh Meyer — philanthropist and builder of Chesed-El Synagogue",
+        "marshall": "David Marshall — Singapore's first Chief Minister and champion of independence"
+      },
+      "visit": {
+        "title": "Plan Your Visit",
+        "hours": "Opening Hours",
+        "hoursDetail": "By appointment only. Contact us to schedule a visit.",
+        "admission": "Admission",
+        "admissionDetail": "Free admission. Donations welcome.",
+        "toursNote": "Guided tours available for groups. Advanced booking required."
+      },
+      "location": {
+        "title": "Location",
+        "address": "Maghain Aboth Synagogue, 24 Waterloo Street, Singapore 187950",
+        "access": "Getting Here",
+        "accessDetail": "Near Bencoolen MRT station. Street parking available."
+      },
+      "tour": {
+        "title": "Book a Guided Tour",
+        "description": "Experience the museum with an expert guide who brings history to life.",
+        "cta": "Request a Tour"
+      },
+      "related": {
+        "title": "Explore More",
+        "history": "Our Community History",
+        "synagogues": "Historic Synagogues"
+      }
+    },
+    "restaurant": {
+      "title": "Awafi Restaurant",
+      "subtitle": "Singapore's kosher restaurant serving a diverse menu of international cuisines in a warm, welcoming atmosphere",
+      "about": {
+        "title": "About Awafi",
+        "description": "Awafi Restaurant is Singapore's premier kosher dining destination, offering a rich variety of cuisines including Indian, Middle Eastern, Chinese, and Western dishes. Our experienced chefs prepare each meal with care, using the finest kosher ingredients to create authentic flavors that bring our community together."
+      },
+      "cuisine": {
+        "title": "Our Cuisines",
+        "badge": "Multi-Cuisine",
+        "indian": "Indian",
+        "middleEastern": "Middle Eastern",
+        "chinese": "Chinese",
+        "western": "Western"
+      },
+      "hours": {
+        "title": "Opening Hours",
+        "breakfast": "Breakfast",
+        "lunch": "Lunch",
+        "dinner": "Dinner",
+        "daily": "Daily",
+        "sunThu": "Sunday - Thursday",
+        "shabbatNote": "Closed Friday evening through Saturday for Shabbat"
+      },
+      "kashrut": {
+        "title": "Kashrut Certification",
+        "badge": "Glatt Kosher",
+        "description": "Awafi Restaurant maintains the highest standards of kashrut, ensuring all ingredients and preparation methods comply with Jewish dietary laws.",
+        "supervisor": "Under the rabbinical supervision of Rabbi Mordechai Abergel"
+      },
+      "contact": {
+        "address": "Maghain Aboth Synagogue, Waterloo Street, Singapore"
+      },
+      "reservations": {
+        "title": "Shabbat Meals",
+        "description": "Join us for Friday night dinner or Shabbat lunch. Reservations required.",
+        "cta": "Make a Reservation"
       }
     },
     "shop": {
@@ -148,6 +276,7 @@
     "events": "Events",
     "shop": "Shop",
     "museum": "Museum",
+    "restaurant": "Restaurant",
     "contact": "Contact",
     "donate": "Donate",
     "memberPortal": "Member Portal"
@@ -212,6 +341,7 @@
       "ganenuPreschool": "Ganenu Preschool",
       "youthPrograms": "Youth Programs",
       "museum": "Museum",
+      "restaurant": "Restaurant",
       "shop": "Shop",
       "donate": "Donate",
       "memberPortal": "Member Portal"

@@ -206,6 +206,34 @@ export interface Product extends BaseSanityDocument {
 }
 
 /**
+ * Event type (for event categorization)
+ */
+export type EventType = "community" | "youth" | "education" | "holiday" | "shabbat" | "sports";
+
+/**
+ * Event document
+ */
+export interface Event extends BaseSanityDocument {
+  _type: "event";
+  name: LocaleString;
+  slug: SanitySlug;
+  eventType: EventType;
+  description?: LocaleBlockContent;
+  date: string; // ISO datetime
+  endDate?: string; // ISO datetime
+  isRecurring?: boolean;
+  recurringSchedule?: LocaleString;
+  location?: LocaleString;
+  price?: number;
+  priceNote?: LocaleString;
+  mainImage?: SanityImage;
+  registrationLink?: string;
+  organizer?: string;
+  capacity?: number;
+  seo?: SEO;
+}
+
+/**
  * Cart item for Zustand store (includes quantity)
  */
 export interface CartItem {

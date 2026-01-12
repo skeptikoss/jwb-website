@@ -7,7 +7,7 @@
 - **Type:** Portfolio/demo project (not live client)
 - **Stack:** Next.js 16 + React 19 + Tailwind v4 + Sanity CMS + Stripe (test mode)
 - **Design:** "Heritage Meets Haven" theme with Hebrew RTL support
-- **Status:** Phase C (E-commerce) 80% complete — see `roadmap.md`
+- **Status:** Phase D (Events) 60% complete — see `roadmap.md`
 - **Sanity Project ID:** `r3h9xffe`
 
 ## Key Files
@@ -39,6 +39,9 @@ src/
 │   │   ├── synagogues/    # Synagogue list + [slug] detail
 │   │   ├── education/     # Education list + [slug] detail
 │   │   ├── leadership/    # Leadership list + [slug] detail
+│   │   ├── events/        # Events list + [slug] detail
+│   │   ├── restaurant/    # Awafi Restaurant info page
+│   │   ├── museum/        # Jews of Singapore Museum page
 │   │   └── shop/          # Shop list, [slug] detail, cart, checkout
 │   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
@@ -59,7 +62,7 @@ src/
 │   └── navigation.ts      # i18n-aware Link, useRouter
 ├── sanity/
 │   ├── schemaTypes/       # Content schemas
-│   │   ├── documents/     # page, synagogue, person, educationProgram, product, productCategory
+│   │   ├── documents/     # page, synagogue, person, educationProgram, product, productCategory, event
 │   │   ├── objects/       # address, serviceTime, seo
 │   │   ├── singletons/    # settings
 │   │   └── locale.ts      # localeString, localeText, localeBlockContent
@@ -233,23 +236,27 @@ const title = page.title[locale]; // "en" or "he"
 | `synagogue` | Document | Synagogue details with service times |
 | `person` | Document | Rabbi, staff, board members |
 | `educationProgram` | Document | Schools and programs |
+| `event` | Document | Community events with type, date, registration |
 | `product` | Document | Shop products with price, kashrut, images |
 | `productCategory` | Document | Product categories (10 seeded) |
 | `settings` | Singleton | Site-wide settings, Shabbat times |
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase C 90% Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase D 60% Complete**.
 
 Completed:
 - Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
 - Phase B: Core Content (Sanity CMS, all content pages, query infrastructure)
 - Phase B.1: Content Fixes (Leadership pages, full History/Synagogue content with Hebrew)
 - Phase C (partial): Shop pages, cart, 172 products seeded, 74 products with images
+- Phase C.1: Community photos (leadership + synagogue images uploaded)
+- Phase D (partial): Events schema, listing/detail pages, 6 sample events
+- Phase D.1: Restaurant page, Museum page, footer navigation
 
-Remaining in Phase C:
-- Stripe checkout integration
-- Order confirmation flow
+Remaining:
+- Phase C: Stripe checkout integration, order confirmation
+- Phase D: RSVP/booking flow, Shabbat meal reservations, paid events
 
 ## Sanity Content Fetching Pattern
 
