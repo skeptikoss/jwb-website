@@ -200,9 +200,11 @@ export default async function MuseumPage() {
                       <p className="font-body font-medium text-charcoal">
                         {t("visit.hours")}
                       </p>
-                      <p className="font-ui text-sm text-warm-gray">
-                        {t("visit.hoursDetail")}
-                      </p>
+                      <div className="mt-1 space-y-0.5 font-ui text-sm text-warm-gray">
+                        <p>{t("visit.hoursWeekday")}</p>
+                        <p>{t("visit.hoursFriday")}</p>
+                        <p className="italic">{t("visit.hoursClosed")}</p>
+                      </div>
                     </div>
 
                     <div>
@@ -211,6 +213,16 @@ export default async function MuseumPage() {
                       </p>
                       <p className="font-ui text-sm text-warm-gray">
                         {t("visit.admissionDetail")}
+                      </p>
+                    </div>
+
+                    {/* Booking Requirement Notice */}
+                    <div className="rounded-lg bg-gold/10 p-3">
+                      <p className="font-body font-medium text-charcoal">
+                        {t("visit.booking")}
+                      </p>
+                      <p className="mt-1 font-ui text-sm text-warm-gray">
+                        {t("visit.bookingDetail")}
                       </p>
                     </div>
 
@@ -252,7 +264,7 @@ export default async function MuseumPage() {
                   </CardContent>
                 </Card>
 
-                {/* Book a Tour CTA */}
+                {/* Book a Visit CTA */}
                 <Card className="bg-navy text-cream shadow-sm">
                   <CardContent className="p-6">
                     <Calendar className="h-8 w-8 text-gold" />
@@ -266,9 +278,13 @@ export default async function MuseumPage() {
                       asChild
                       className="mt-4 w-full bg-gold text-charcoal hover:bg-gold/90"
                     >
-                      <Link href="/contact">
+                      <a
+                        href="https://calendly.com/jewsofsingapore"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {t("tour.cta")}
-                      </Link>
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>

@@ -364,16 +364,16 @@ src/
     └── types.ts              # Added Event, EventType types
 ```
 
-### Sample Events Seeded
+### Events (Synced from singaporejews.com - 2026 only)
 
-| Event | Type | Recurring |
-|-------|------|-----------|
-| JLI Learning for Teens | Education | Yes (Thursdays) |
-| Sunday Football | Sports | Yes (Sundays) |
-| VIP Girls Club | Youth | Yes (Monthly) |
-| Krav Maga for Ladies | Sports | Yes (Tuesdays) |
-| Tu B'Shvat Celebration | Holiday | No |
-| Community Purim Party | Holiday | No (Free) |
+| Event | Type | Date | Recurring |
+|-------|------|------|-----------|
+| Krav Maga Training for Ladies | Sports | Jan 12, 2026 | Every Monday |
+| Ktantanim | Youth | Jan 13, 2026 | Every Tuesday |
+| VIP Girls Club | Youth | Jan 15, 2026 | Every Thursday |
+| JLI Learning for Teens | Education | Jan 15, 2026 | Every Thursday |
+
+**Note:** Events synced from live site with real dates, prices, locations, and registration links. Script: `scripts/sync-events-2026.ts`
 
 ---
 
@@ -426,6 +426,26 @@ Added to "Visit & Support" section:
   - Replaced hardcoded cards with data-driven loop
   - Uses SanityImage component with proper responsive sizing
   - Locale-aware content (name, meaning, address)
+- [x] Header navigation restructured with dropdowns (shadcn NavigationMenu)
+  - "About" dropdown: History, Leadership, Contact
+  - "Visit" dropdown: Restaurant, Museum, Travel Info
+  - Direct links: Synagogues, Events, Education, Shop
+  - Donate CTA button
+  - Mobile menu with section headers
+- [x] Museum page updated with real information
+  - Real opening hours (Sun-Thu 10am-6pm, Fri 10am-12pm)
+  - Booking requirement notice (3 days advance)
+  - Tour booking CTA links to Calendly
+- [x] Education page redesigned (no images)
+  - Removed all education program images
+  - New icon header cards with program-type colors
+  - Icons: Blocks (preschool), BookOpen (sunday-school), School (day-school)
+- [x] Sunday School updated from Google Form data
+  - Real schedule: Sundays 9:30 AM - 12:00 PM
+  - Location: Jacob Ballas Centre, 24 Waterloo Street
+  - Fee: S$1,300/year (30 school days)
+  - Ages: 4-12
+  - Registration link to Google Form
 - [x] JWB logo added to header
   - Downloaded from singaporejews.com
   - Stored at `/public/images/jwb-logo.png`
@@ -513,7 +533,9 @@ public/
 | 2026-01-11 | Bulk Sanity Operations | Scripts over MCP | See "Bulk Operations Pattern" below |
 | 2026-01-12 | Events pricing model | Single price + priceNote | Simple approach; priceNote handles variants like "Kids $15, Adults $25" |
 | 2026-01-12 | Restaurant/Museum pages | Static pages (not CMS) | Quick implementation; can migrate to Sanity later if needed |
-| 2026-01-12 | Navigation structure | Minimal changes | Keep flat header; Restaurant added to footer only |
+| 2026-01-12 | Navigation structure | Dropdown menus | "About" and "Visit" dropdowns with shadcn NavigationMenu |
+| 2026-01-12 | Education cards | Icon headers (no images) | Colored headers with program-type icons; cleaner than placeholder images |
+| 2026-01-12 | Events data source | Sync from live site | 2026 events only; script-based sync with real data from singaporejews.com |
 
 ---
 

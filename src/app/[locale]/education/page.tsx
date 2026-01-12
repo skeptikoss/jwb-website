@@ -2,12 +2,18 @@ import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { Header, Footer } from "@/components/layout";
-import { SanityImage } from "@/components/sanity";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
-import { GraduationCap, Users } from "lucide-react";
+import {
+  GraduationCap,
+  Users,
+  School,
+  BookOpen,
+  Blocks,
+  type LucideIcon,
+} from "lucide-react";
 
 import {
   getAllEducationPrograms,
@@ -16,14 +22,42 @@ import {
 } from "@/lib/sanity";
 
 /**
- * Program type labels for badges
+ * Program type configuration (labels, icons, colors)
  */
-const programTypeLabels: Record<string, { en: string; he: string }> = {
-  preschool: { en: "Preschool", he: "גן ילדים" },
-  "sunday-school": { en: "Sunday School", he: "בית ספר יום ראשון" },
-  "day-school": { en: "Day School", he: "בית ספר יום" },
-  adult: { en: "Adult Education", he: "חינוך מבוגרים" },
-  youth: { en: "Youth Program", he: "תוכנית נוער" },
+const programTypeConfig: Record<
+  string,
+  { en: string; he: string; icon: LucideIcon; bgColor: string }
+> = {
+  preschool: {
+    en: "Preschool",
+    he: "גן ילדים",
+    icon: Blocks,
+    bgColor: "bg-sage",
+  },
+  "sunday-school": {
+    en: "Sunday School",
+    he: "בית ספר יום ראשון",
+    icon: BookOpen,
+    bgColor: "bg-terracotta",
+  },
+  "day-school": {
+    en: "Day School",
+    he: "בית ספר יום",
+    icon: School,
+    bgColor: "bg-navy",
+  },
+  adult: {
+    en: "Adult Education",
+    he: "חינוך מבוגרים",
+    icon: GraduationCap,
+    bgColor: "bg-sky",
+  },
+  youth: {
+    en: "Youth Program",
+    he: "תוכנית נוער",
+    icon: Users,
+    bgColor: "bg-gold",
+  },
 };
 
 /**
@@ -84,40 +118,29 @@ export default async function EducationPage() {
                 {programs.map((program) => {
                   const name = getLocalizedValue(program.name, locale) || "Program";
                   const ageRange = getLocalizedValue(program.ageRange, locale);
-                  const typeLabel = program.type
-                    ? programTypeLabels[program.type]?.[locale] ||
-                      programTypeLabels[program.type]?.en
+                  const config = program.type
+                    ? programTypeConfig[program.type]
                     : null;
+                  const typeLabel = config?.[locale] || config?.en;
+                  const IconComponent = config?.icon || GraduationCap;
+                  const bgColor = config?.bgColor || "bg-navy";
 
                   return (
                     <Card
                       key={program._id}
                       className="flex flex-col overflow-hidden bg-white shadow-sm transition-shadow hover:shadow-md"
                     >
-                      {/* Image */}
-                      <div className="relative aspect-[4/3] bg-warm-gray/20">
-                        {program.mainImage ? (
-                          <SanityImage
-                            image={program.mainImage}
-                            locale={locale}
-                            fill
-                            className="object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center">
-                            <GraduationCap className="h-12 w-12 text-warm-gray/50" />
-                          </div>
-                        )}
+                      {/* Icon Header */}
+                      <div
+                        className={`${bgColor} flex items-center justify-between px-5 py-4`}
+                      >
+                        <Badge className="bg-white/20 text-white backdrop-blur-sm">
+                          {typeLabel}
+                        </Badge>
+                        <IconComponent className="h-8 w-8 text-white/80" />
                       </div>
 
                       <CardContent className="flex flex-1 flex-col p-5">
-                        {/* Type Badge */}
-                        {typeLabel && (
-                          <Badge className="mb-2 w-fit bg-sage text-white">
-                            {typeLabel}
-                          </Badge>
-                        )}
-
                         {/* Name */}
                         <h2 className="font-heading text-xl font-semibold text-navy">
                           {name}

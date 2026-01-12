@@ -144,9 +144,13 @@
       "visit": {
         "title": "Plan Your Visit",
         "hours": "Opening Hours",
-        "hoursDetail": "By appointment only. Contact us to schedule a visit.",
+        "hoursWeekday": "Sunday – Thursday: 10am – 6pm",
+        "hoursFriday": "Friday: 10am – 12pm",
+        "hoursClosed": "Closed on Saturdays and Jewish Festivals",
         "admission": "Admission",
-        "admissionDetail": "Free admission. Donations welcome.",
+        "admissionDetail": "Free of Charge",
+        "booking": "Booking Required",
+        "bookingDetail": "Please book your visit at least 3 days in advance.",
         "toursNote": "Guided tours available for groups. Advanced booking required."
       },
       "location": {
@@ -156,9 +160,9 @@
         "accessDetail": "Near Bencoolen MRT station. Street parking available."
       },
       "tour": {
-        "title": "Book a Guided Tour",
-        "description": "Experience the museum with an expert guide who brings history to life.",
-        "cta": "Request a Tour"
+        "title": "Book Your Visit",
+        "description": "Schedule your museum visit online. All bookings must be made at least 3 days in advance.",
+        "cta": "Schedule Your Visit"
       },
       "related": {
         "title": "Explore More",
@@ -271,12 +275,16 @@
   },
   "nav": {
     "about": "About",
+    "history": "History",
     "leadership": "Leadership",
     "synagogues": "Synagogues",
     "events": "Events",
-    "shop": "Shop",
-    "museum": "Museum",
+    "education": "Education",
+    "visit": "Visit",
     "restaurant": "Restaurant",
+    "museum": "Museum",
+    "travel": "Travel Info",
+    "shop": "Shop",
     "contact": "Contact",
     "donate": "Donate",
     "memberPortal": "Member Portal"
