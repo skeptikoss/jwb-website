@@ -17,6 +17,7 @@
 | C.1 Community Photos | ✅ Complete | 100% |
 | D. Events & Booking | 🟡 In Progress | 60% |
 | D.1 Restaurant & Museum Pages | ✅ Complete | 100% |
+| D.2 UI Polish | ✅ Complete | 100% |
 | E. Member Portal & Donations | 🔲 Not Started | 0% |
 | F. Polish & Optimization | 🔲 Not Started | 0% |
 | G. Launch Preparation | 🔲 Not Started | 0% |
@@ -411,6 +412,43 @@ Added to "Visit & Support" section:
 - Shop → `/shop`
 - Donate → `/donate`
 - Member Portal → `/member`
+
+---
+
+## Phase D.2: UI Polish ✅
+
+**Status:** Complete
+**Completed:** 2026-01-12
+
+### Tasks Completed
+
+- [x] Homepage synagogue section now fetches dynamically from Sanity
+  - Replaced hardcoded cards with data-driven loop
+  - Uses SanityImage component with proper responsive sizing
+  - Locale-aware content (name, meaning, address)
+- [x] JWB logo added to header
+  - Downloaded from singaporejews.com
+  - Stored at `/public/images/jwb-logo.png`
+  - Shows logo + site name on desktop, logo only on mobile
+- [x] Favicon and apple-touch-icon added
+  - `/public/favicon.ico` (32x32)
+  - `/public/apple-touch-icon.png` (270x270)
+  - Metadata configured in root layout
+- [x] Synagogue image corrections in Sanity
+  - Swapped Chesed El main/gallery images (exterior now main)
+  - Swapped Maghain Aboth main/gallery images (exterior now main)
+
+### Files Modified
+
+```
+src/app/[locale]/page.tsx     # Dynamic synagogue fetching
+src/app/layout.tsx            # Added icons metadata
+src/components/layout/header.tsx  # Added logo image
+public/
+├── images/jwb-logo.png       # Header logo
+├── favicon.ico               # Browser tab icon
+└── apple-touch-icon.png      # iOS home screen icon
+```
 
 ---
 

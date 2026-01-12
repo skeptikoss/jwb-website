@@ -253,6 +253,7 @@ Completed:
 - Phase C.1: Community photos (leadership + synagogue images uploaded)
 - Phase D (partial): Events schema, listing/detail pages, 6 sample events
 - Phase D.1: Restaurant page, Museum page, footer navigation
+- Phase D.2: UI Polish (logo, favicon, dynamic homepage synagogues)
 
 Remaining:
 - Phase C: Stripe checkout integration, order confirmation

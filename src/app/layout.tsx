@@ -56,6 +56,10 @@ export const metadata: Metadata = {
     "Jewish community",
   ],
   authors: [{ name: "Jewish Welfare Board Singapore" }],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_SG",

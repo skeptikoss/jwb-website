@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { localeNames, type Locale } from "@/i18n/config";
@@ -52,7 +53,15 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="font-heading text-xl font-bold text-navy">
+          <Image
+            src="/images/jwb-logo.png"
+            alt="JWB Singapore"
+            width={40}
+            height={45}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="hidden font-heading text-xl font-bold text-navy sm:inline">
             {tCommon("siteName")}
           </span>
         </Link>

@@ -1,14 +1,18 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
+import { getAllSynagogues, getLocalizedValue, type Locale } from "@/lib/sanity";
+import { SanityImage } from "@/components/sanity/sanity-image";
 
 export default async function Home() {
   const t = await getTranslations("home");
   const tCommon = await getTranslations("common");
+  const locale = (await getLocale()) as Locale;
+  const synagogues = await getAllSynagogues();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -163,63 +167,56 @@ export default async function Home() {
             </div>
 
             <div className="mt-12 grid gap-8 md:grid-cols-2">
-              {/* Maghain Aboth */}
-              <Card className="overflow-hidden bg-white shadow-sm">
-                <div className="aspect-video bg-warm-gray/20">
-                  {/* Placeholder for synagogue image */}
-                  <div className="flex h-full items-center justify-center">
-                    <span className="font-ui text-sm text-warm-gray">
-                      Synagogue Image
-                    </span>
+              {synagogues.map((synagogue) => (
+                <Card key={synagogue._id} className="overflow-hidden bg-white shadow-sm">
+                  <div className="relative aspect-video bg-warm-gray/20">
+                    {synagogue.mainImage ? (
+                      <SanityImage
+                        image={synagogue.mainImage}
+                        locale={locale}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <span className="font-ui text-sm text-warm-gray">
+                          {getLocalizedValue(synagogue.name, locale)}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <Badge className="bg-sage text-white">Est. 1878</Badge>
-                  <h3 className="mt-3 font-heading text-2xl font-semibold text-navy">
-                    Maghain Aboth
-                  </h3>
-                  <p className="mt-2 font-body text-warm-gray">
-                    &ldquo;Shield of our Fathers&rdquo; - Singapore&apos;s oldest
-                    synagogue, built in the Baghdadi tradition.
-                  </p>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-charcoal">
-                    <MapPin className="h-4 w-4 text-gold" />
-                    <span>24 Waterloo Street</span>
-                  </div>
-                  <Button asChild className="mt-4 bg-navy text-cream">
-                    <Link href="/synagogues/maghain-aboth">{tCommon("learnMore")}</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Chesed El */}
-              <Card className="overflow-hidden bg-white shadow-sm">
-                <div className="aspect-video bg-warm-gray/20">
-                  {/* Placeholder for synagogue image */}
-                  <div className="flex h-full items-center justify-center">
-                    <span className="font-ui text-sm text-warm-gray">
-                      Synagogue Image
-                    </span>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <Badge className="bg-sage text-white">Est. 1905</Badge>
-                  <h3 className="mt-3 font-heading text-2xl font-semibold text-navy">
-                    Chesed El
-                  </h3>
-                  <p className="mt-2 font-body text-warm-gray">
-                    &ldquo;God&apos;s Mercy&rdquo; - A grand synagogue known for
-                    its impressive architecture.
-                  </p>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-charcoal">
-                    <MapPin className="h-4 w-4 text-gold" />
-                    <span>2 Oxley Rise</span>
-                  </div>
-                  <Button asChild className="mt-4 bg-navy text-cream">
-                    <Link href="/synagogues/chesed-el">{tCommon("learnMore")}</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-6">
+                    {synagogue.yearEstablished && (
+                      <Badge className="bg-sage text-white">
+                        Est. {synagogue.yearEstablished}
+                      </Badge>
+                    )}
+                    <h3 className="mt-3 font-heading text-2xl font-semibold text-navy">
+                      {getLocalizedValue(synagogue.name, locale)}
+                    </h3>
+                    {synagogue.meaningOfName && (
+                      <p className="mt-2 font-body text-warm-gray">
+                        &ldquo;{getLocalizedValue(synagogue.meaningOfName, locale)}&rdquo;
+                        {synagogue.description && (
+                          <> - {getLocalizedValue(synagogue.description, locale)}</>
+                        )}
+                      </p>
+                    )}
+                    {synagogue.address?.street && (
+                      <div className="mt-4 flex items-center gap-2 text-sm text-charcoal">
+                        <MapPin className="h-4 w-4 text-gold" />
+                        <span>{synagogue.address.street}</span>
+                      </div>
+                    )}
+                    <Button asChild className="mt-4 bg-navy text-cream">
+                      <Link href={`/synagogues/${synagogue.slug.current}`}>
+                        {tCommon("learnMore")}
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
