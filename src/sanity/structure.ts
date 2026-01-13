@@ -1,5 +1,5 @@
 import type { StructureResolver } from "sanity/structure";
-import { Settings, FileText, Building2, User, GraduationCap, ShoppingBag, Tags } from "lucide-react";
+import { Settings, FileText, Building2, User, GraduationCap, ShoppingBag, Tags, Calendar } from "lucide-react";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -128,6 +128,68 @@ export const structure: StructureResolver = (S) =>
                   S.documentList()
                     .title("Youth Programs")
                     .filter('_type == "educationProgram" && type == "youth"')
+                ),
+            ])
+        ),
+
+      // Events
+      S.listItem()
+        .title("Events")
+        .icon(Calendar)
+        .schemaType("event")
+        .child(
+          S.list()
+            .title("Events")
+            .items([
+              S.listItem()
+                .title("All Events")
+                .child(
+                  S.documentTypeList("event")
+                    .title("All Events")
+                    .defaultOrdering([{ field: "date", direction: "asc" }])
+                ),
+              S.divider(),
+              S.listItem()
+                .title("Community Events")
+                .child(
+                  S.documentList()
+                    .title("Community Events")
+                    .filter('_type == "event" && eventType == "community"')
+                ),
+              S.listItem()
+                .title("Youth Events")
+                .child(
+                  S.documentList()
+                    .title("Youth Events")
+                    .filter('_type == "event" && eventType == "youth"')
+                ),
+              S.listItem()
+                .title("Educational Events")
+                .child(
+                  S.documentList()
+                    .title("Educational Events")
+                    .filter('_type == "event" && eventType == "education"')
+                ),
+              S.listItem()
+                .title("Holiday Events")
+                .child(
+                  S.documentList()
+                    .title("Holiday Events")
+                    .filter('_type == "event" && eventType == "holiday"')
+                ),
+              S.listItem()
+                .title("Shabbat Events")
+                .child(
+                  S.documentList()
+                    .title("Shabbat Events")
+                    .filter('_type == "event" && eventType == "shabbat"')
+                ),
+              S.listItem()
+                .title("Sports Events")
+                .child(
+                  S.documentList()
+                    .title("Sports Events")
+                    .filter('_type == "event" && eventType == "sports"')
                 ),
             ])
         ),

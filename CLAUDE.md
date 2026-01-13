@@ -246,7 +246,7 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase D.3 Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase D 70% Complete**.
 
 Completed:
 - Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
@@ -254,7 +254,7 @@ Completed:
 - Phase B.1: Content Fixes (Leadership pages, full History/Synagogue content with Hebrew)
 - Phase C (partial): Shop pages, cart, 172 products seeded, 74 products with images
 - Phase C.1: Community photos (leadership + synagogue images uploaded)
-- Phase D (partial): Events schema, listing/detail pages, 6 sample events
+- Phase D (partial): Events schema, listing/detail pages, 4 events, Studio integration, dynamic homepage
 - Phase D.1: Restaurant page, Museum page, footer navigation
 - Phase D.2: UI Polish (logo, favicon, dynamic homepage synagogues)
 - Phase D.3: Additional pages (Youth, Genizah, Mikvah), footer fixes, education images

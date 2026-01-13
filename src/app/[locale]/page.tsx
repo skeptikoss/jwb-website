@@ -5,14 +5,86 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
-import { getAllSynagogues, getLocalizedValue, type Locale } from "@/lib/sanity";
+import { getAllSynagogues, getUpcomingEvents, getLocalizedValue, type Locale } from "@/lib/sanity";
 import { SanityImage } from "@/components/sanity/sanity-image";
+
+/**
+ * Fetch Shabbat times from Hebcal API for Singapore
+ */
+interface ShabbatTimes {
+  candleLighting: string | null;
+  havdalah: string | null;
+  parsha: string | null;
+}
+
+async function getShabbatTimes(): Promise<ShabbatTimes> {
+  try {
+    // Singapore coordinates and timezone
+    const params = new URLSearchParams({
+      cfg: "json",
+      latitude: "1.3521",
+      longitude: "103.8198",
+      tzid: "Asia/Singapore",
+      M: "on", // Include Havdalah time
+    });
+
+    const response = await fetch(
+      `https://www.hebcal.com/shabbat?${params.toString()}`,
+      { next: { revalidate: 3600 } } // Cache for 1 hour
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch Shabbat times");
+    }
+
+    const data = await response.json();
+
+    // Extract candle lighting and havdalah times from items
+    let candleLighting: string | null = null;
+    let havdalah: string | null = null;
+    let parsha: string | null = null;
+
+    for (const item of data.items || []) {
+      if (item.category === "candles") {
+        // Format: "2026-01-16T18:58:00+08:00" -> "6:58 PM"
+        const date = new Date(item.date);
+        candleLighting = date.toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "Asia/Singapore",
+        });
+      } else if (item.category === "havdalah") {
+        const date = new Date(item.date);
+        havdalah = date.toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "Asia/Singapore",
+        });
+      } else if (item.category === "parashat") {
+        parsha = item.title;
+      }
+    }
+
+    return { candleLighting, havdalah, parsha };
+  } catch (error) {
+    console.error("Error fetching Shabbat times:", error);
+    return { candleLighting: null, havdalah: null, parsha: null };
+  }
+}
 
 export default async function Home() {
   const t = await getTranslations("home");
   const tCommon = await getTranslations("common");
   const locale = (await getLocale()) as Locale;
-  const synagogues = await getAllSynagogues();
+
+  // Fetch data in parallel
+  const [synagogues, upcomingEvents, shabbatTimes] = await Promise.all([
+    getAllSynagogues(),
+    getUpcomingEvents(1), // Get next upcoming event
+    getShabbatTimes(),
+  ]);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -62,20 +134,29 @@ export default async function Home() {
                   <CardTitle className="font-heading text-lg text-navy">
                     {t("shabbatTimes.title")}
                   </CardTitle>
+                  {shabbatTimes.parsha && (
+                    <p className="font-body text-xs text-warm-gray">{shabbatTimes.parsha}</p>
+                  )}
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 font-body text-sm text-charcoal">
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gold" />
-                      <span>{t("shabbatTimes.candleLighting")}: 6:58 PM</span>
+                      <span>
+                        {t("shabbatTimes.candleLighting")}:{" "}
+                        {shabbatTimes.candleLighting || "—"}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gold" />
-                      <span>{t("shabbatTimes.havdalah")}: 7:53 PM</span>
+                      <span>
+                        {t("shabbatTimes.havdalah")}:{" "}
+                        {shabbatTimes.havdalah || "—"}
+                      </span>
                     </div>
                   </div>
                   <Link
-                    href="/services"
+                    href="/synagogues"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"
                   >
                     {t("shabbatTimes.viewServices")}
@@ -92,13 +173,33 @@ export default async function Home() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 font-body text-sm text-charcoal">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-gold" />
-                      <span>Shabbat Dinner</span>
+                  {upcomingEvents.length > 0 ? (
+                    <div className="space-y-2 font-body text-sm text-charcoal">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-gold" />
+                        <span className="line-clamp-1">
+                          {getLocalizedValue(upcomingEvents[0].name, locale)}
+                        </span>
+                      </div>
+                      <p className="text-warm-gray">
+                        {new Date(upcomingEvents[0].date).toLocaleDateString(
+                          locale === "he" ? "he-IL" : "en-US",
+                          {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit",
+                            timeZone: "Asia/Singapore",
+                          }
+                        )}
+                      </p>
                     </div>
-                    <p className="text-warm-gray">Friday, Jan 10 - 7:00 PM</p>
-                  </div>
+                  ) : (
+                    <p className="font-body text-sm text-warm-gray">
+                      {t("events.noUpcoming")}
+                    </p>
+                  )}
                   <Link
                     href="/events"
                     className="mt-4 inline-flex items-center font-ui text-sm font-medium text-navy hover:text-gold"

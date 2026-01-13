@@ -126,10 +126,13 @@ export default async function EventDetailPage({ params }: PageProps) {
   const location = getLocalizedValue(event.location, locale);
   const priceNote = getLocalizedValue(event.priceNote, locale);
   const recurringSchedule = getLocalizedValue(event.recurringSchedule, locale);
-  const typeLabel =
-    eventTypeLabels[event.eventType]?.[locale] ||
-    eventTypeLabels[event.eventType]?.en;
-  const typeColor = eventTypeColors[event.eventType] || "bg-navy text-cream";
+  const typeLabel = event.eventType
+    ? eventTypeLabels[event.eventType]?.[locale] ||
+      eventTypeLabels[event.eventType]?.en
+    : undefined;
+  const typeColor = event.eventType
+    ? eventTypeColors[event.eventType] || "bg-navy text-cream"
+    : "bg-navy text-cream";
 
   const { date: formattedDate, time: formattedTime } = formatFullDateTime(
     event.date,
@@ -164,15 +167,6 @@ export default async function EventDetailPage({ params }: PageProps) {
               <ArrowLeft className="me-2 h-4 w-4" />
               {tCommon("backTo", { page: t("title") })}
             </Link>
-
-            {/* Type Badge */}
-            <Badge className={`mb-4 ${typeColor}`}>{typeLabel}</Badge>
-            {event.isRecurring && (
-              <Badge className="mb-4 ms-2 bg-white/20 text-white">
-                <Repeat className="me-1 h-3 w-3" />
-                {t("recurring")}
-              </Badge>
-            )}
 
             {/* Event Name */}
             <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
@@ -316,6 +310,21 @@ export default async function EventDetailPage({ params }: PageProps) {
                           </p>
                           <p className="font-body text-sm text-warm-gray">
                             {event.capacity} {t("spots")}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Age Range */}
+                    {event.ageRange && (
+                      <div className="flex items-start gap-3">
+                        <Users className="h-5 w-5 text-gold" />
+                        <div>
+                          <p className="font-body font-medium text-charcoal">
+                            {t("ageRange")}
+                          </p>
+                          <p className="font-body text-sm text-warm-gray">
+                            {t("ages", { range: event.ageRange })}
                           </p>
                         </div>
                       </div>

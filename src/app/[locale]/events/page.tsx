@@ -128,9 +128,13 @@ export default async function EventsPage() {
                   const location = getLocalizedValue(event.location, locale);
                   const priceNote = getLocalizedValue(event.priceNote, locale);
                   const recurringSchedule = getLocalizedValue(event.recurringSchedule, locale);
-                  const typeLabel = eventTypeLabels[event.eventType]?.[locale] ||
-                    eventTypeLabels[event.eventType]?.en;
-                  const typeColor = eventTypeColors[event.eventType] || "bg-navy text-cream";
+                  const typeLabel = event.eventType
+                    ? eventTypeLabels[event.eventType]?.[locale] ||
+                      eventTypeLabels[event.eventType]?.en
+                    : "";
+                  const typeColor = event.eventType
+                    ? eventTypeColors[event.eventType]
+                    : "bg-navy text-cream";
 
                   return (
                     <Card

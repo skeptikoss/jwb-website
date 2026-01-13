@@ -217,7 +217,7 @@ export interface Event extends BaseSanityDocument {
   _type: "event";
   name: LocaleString;
   slug: SanitySlug;
-  eventType: EventType;
+  eventType?: EventType | null;
   description?: LocaleBlockContent;
   date: string; // ISO datetime
   endDate?: string; // ISO datetime
@@ -230,6 +230,7 @@ export interface Event extends BaseSanityDocument {
   registrationLink?: string;
   organizer?: string;
   capacity?: number;
+  ageRange?: string;
   seo?: SEO;
 }
 

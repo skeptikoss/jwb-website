@@ -76,6 +76,8 @@
       "time": "שעה",
       "location": "מיקום",
       "price": "מחיר",
+      "ageRange": "טווח גילאים",
+      "ages": "גילאים {range}",
       "organizer": "מארגן",
       "register": "הרשמה",
       "noDescription": "פרטים נוספים בקרוב.",
@@ -456,7 +458,8 @@
     },
     "events": {
       "title": "אירועים קרובים",
-      "allEvents": "כל האירועים"
+      "allEvents": "כל האירועים",
+      "noUpcoming": "אין אירועים קרובים"
     },
     "shop": {
       "title": "חנות כשר",

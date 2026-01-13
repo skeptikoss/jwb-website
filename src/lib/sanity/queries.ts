@@ -381,6 +381,7 @@ const eventFields = /* groq */ `
   registrationLink,
   organizer,
   capacity,
+  ageRange,
   seo
 `;
 

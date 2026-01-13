@@ -76,6 +76,8 @@
       "time": "Time",
       "location": "Location",
       "price": "Price",
+      "ageRange": "Age Range",
+      "ages": "Ages {range}",
       "organizer": "Organizer",
       "register": "Register / RSVP",
       "noDescription": "More details coming soon.",
@@ -456,7 +458,8 @@
     },
     "events": {
       "title": "Upcoming Events",
-      "allEvents": "All Events"
+      "allEvents": "All Events",
+      "noUpcoming": "No upcoming events"
     },
     "shop": {
       "title": "Kosher Shop",

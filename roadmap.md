@@ -15,7 +15,7 @@
 | B.1 Content Fixes | ✅ Complete | 100% |
 | C. E-commerce | 🟡 In Progress | 90% |
 | C.1 Community Photos | ✅ Complete | 100% |
-| D. Events & Booking | 🟡 In Progress | 60% |
+| D. Events & Booking | 🟡 In Progress | 70% |
 | D.1 Restaurant & Museum Pages | ✅ Complete | 100% |
 | D.2 UI Polish | ✅ Complete | 100% |
 | D.3 Additional Pages | ✅ Complete | 100% |
@@ -329,7 +329,7 @@ scripts/
 
 ## Phase D: Events & Booking 🟡
 
-**Status:** In Progress (60%)
+**Status:** In Progress (70%)
 **Started:** 2026-01-12
 
 ### Tasks Completed
@@ -338,10 +338,14 @@ scripts/
 - [x] Events listing page (`/events`)
 - [x] Event detail page (`/events/[slug]`)
 - [x] Event types with color-coded badges (community, youth, education, holiday, shabbat, sports)
-- [x] 6 sample events seeded and published
+- [x] 4 events seeded and published with real data
 - [x] i18n translations (EN + HE)
 - [x] Event queries in `src/lib/sanity/queries.ts`
 - [x] Event TypeScript types in `src/lib/sanity/types.ts`
+- [x] Events added to Sanity Studio structure (with category filters)
+- [x] Homepage dynamic events section (fetches upcoming events from Sanity)
+- [x] Homepage dynamic Shabbat times (fetches from Hebcal API)
+- [x] Age range field support for youth events
 
 ### Tasks Remaining
 
@@ -365,16 +369,16 @@ src/
     └── types.ts              # Added Event, EventType types
 ```
 
-### Events (Synced from singaporejews.com - 2026 only)
+### Events (Current)
 
-| Event | Type | Date | Recurring |
-|-------|------|------|-----------|
-| Krav Maga Training for Ladies | Sports | Jan 12, 2026 | Every Monday |
-| Ktantanim | Youth | Jan 13, 2026 | Every Tuesday |
-| VIP Girls Club | Youth | Jan 15, 2026 | Every Thursday |
-| JLI Learning for Teens | Education | Jan 15, 2026 | Every Thursday |
+| Event | Type | Date | Price | Age Range |
+|-------|------|------|-------|-----------|
+| VIP Girls Club | Youth | Thu, Jan 15, 2026 6pm | $15 | 11-14 |
+| JLI Learning for Teens | Education | Thu, Jan 15, 2026 7:30pm | $10 | - |
+| Krav Maga Training for Ladies | Sports | Mon, Jan 19, 2026 7:30pm | $10 | - |
+| Ktantanim | Youth | Tue, Jan 20, 2026 10am | $10 | 3-6 |
 
-**Note:** Events synced from live site with real dates, prices, locations, and registration links. Script: `scripts/sync-events-2026.ts`
+**Note:** Events managed via Sanity Studio at `/studio` → Events.
 
 ---
 
