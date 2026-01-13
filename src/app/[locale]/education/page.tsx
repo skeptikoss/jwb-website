@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { Header, Footer } from "@/components/layout";
+import { SanityImage } from "@/components/sanity/sanity-image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -124,21 +125,37 @@ export default async function EducationPage() {
                   const typeLabel = config?.[locale] || config?.en;
                   const IconComponent = config?.icon || GraduationCap;
                   const bgColor = config?.bgColor || "bg-navy";
+                  const hasImage = program.mainImage?.asset;
 
                   return (
                     <Card
                       key={program._id}
                       className="flex flex-col overflow-hidden bg-white shadow-sm transition-shadow hover:shadow-md"
                     >
-                      {/* Icon Header */}
-                      <div
-                        className={`${bgColor} flex items-center justify-between px-5 py-4`}
-                      >
-                        <Badge className="bg-white/20 text-white backdrop-blur-sm">
-                          {typeLabel}
-                        </Badge>
-                        <IconComponent className="h-8 w-8 text-white/80" />
-                      </div>
+                      {/* Image Header */}
+                      {hasImage ? (
+                        <div className="relative h-48 w-full bg-cream">
+                          <SanityImage
+                            image={program.mainImage}
+                            alt={name}
+                            locale={locale}
+                            fill
+                            className="object-contain p-4"
+                          />
+                          <Badge className={`${bgColor} absolute start-3 top-3 text-white`}>
+                            {typeLabel}
+                          </Badge>
+                        </div>
+                      ) : (
+                        <div
+                          className={`${bgColor} flex items-center justify-between px-5 py-4`}
+                        >
+                          <Badge className="bg-white/20 text-white backdrop-blur-sm">
+                            {typeLabel}
+                          </Badge>
+                          <IconComponent className="h-8 w-8 text-white/80" />
+                        </div>
+                      )}
 
                       <CardContent className="flex flex-1 flex-col p-5">
                         {/* Name */}

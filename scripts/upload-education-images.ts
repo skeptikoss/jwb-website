@@ -20,16 +20,39 @@ const client = createClient({
 });
 
 // Configuration for education program images
+// Document IDs from Sanity query:
+// - Ganenu: 388c631e-ae49-481b-b7ab-fc1c3a46eda3
+// - SMMIS: bc365d5c-8230-4df7-9896-9af7f52bacb1
+// - Sunday School: f7e74bbf-506a-4fb4-93dc-8a3e96e8928f
 const EDUCATION_IMAGES = [
+  {
+    documentId: "388c631e-ae49-481b-b7ab-fc1c3a46eda3",
+    name: "Ganenu Preschool",
+    imageUrl: "https://singaporejews.com/wp-content/uploads/2023/07/logo_ganenu_small-300x199.png",
+    filename: "ganenu-logo.png",
+    alt: {
+      en: "Ganenu Preschool Logo",
+      he: "לוגו גן גננו",
+    },
+  },
   {
     documentId: "bc365d5c-8230-4df7-9896-9af7f52bacb1",
     name: "Sir Manasseh Meyer International School",
-    imageUrl:
-      "https://cdn.prod.website-files.com/64d5d06f04d8b5374330f13e/64d5d06f04d8b5374330f179_SMMIS_Logo.svg",
-    filename: "smmis-logo.svg",
+    imageUrl: "https://singaporejews.com/wp-content/uploads/2021/11/smm.png",
+    filename: "smmis-logo.png",
     alt: {
       en: "Sir Manasseh Meyer International School (SMMIS) Logo",
       he: "לוגו בית הספר הבינלאומי סר מנשה מייר",
+    },
+  },
+  {
+    documentId: "f7e74bbf-506a-4fb4-93dc-8a3e96e8928f",
+    name: "Sunday School (Talmud Torah)",
+    imageUrl: "https://singaporejews.com/wp-content/uploads/2021/11/Sunday-school1.jpeg",
+    filename: "sunday-school.jpeg",
+    alt: {
+      en: "Sunday School Students",
+      he: "תלמידי בית הספר ליום ראשון",
     },
   },
 ];

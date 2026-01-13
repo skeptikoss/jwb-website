@@ -6,7 +6,6 @@ import { Header, Footer } from "@/components/layout";
 import { PortableTextRenderer, SanityImage } from "@/components/sanity";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
 import {
   ArrowLeft,
@@ -27,17 +26,6 @@ import {
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
-
-/**
- * Program type labels
- */
-const programTypeLabels: Record<string, { en: string; he: string }> = {
-  preschool: { en: "Preschool", he: "גן ילדים" },
-  "sunday-school": { en: "Sunday School", he: "בית ספר יום ראשון" },
-  "day-school": { en: "Day School", he: "בית ספר יום" },
-  adult: { en: "Adult Education", he: "חינוך מבוגרים" },
-  youth: { en: "Youth Program", he: "תוכנית נוער" },
-};
 
 /**
  * Generate static paths for education program detail pages
@@ -87,9 +75,6 @@ export default async function EducationProgramDetailPage({ params }: PageProps) 
   const name = getLocalizedValue(program.name, locale) || "Program";
   const ageRange = getLocalizedValue(program.ageRange, locale);
   const schedule = getLocalizedValue(program.schedule, locale);
-  const typeLabel = program.type
-    ? programTypeLabels[program.type]?.[locale] || programTypeLabels[program.type]?.en
-    : null;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -120,11 +105,6 @@ export default async function EducationProgramDetailPage({ params }: PageProps) 
               {tCommon("backTo", { page: t("title") })}
             </Link>
 
-            {/* Type Badge */}
-            {typeLabel && (
-              <Badge className="mb-4 bg-gold text-charcoal">{typeLabel}</Badge>
-            )}
-
             {/* Name */}
             <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
               {name}
@@ -154,9 +134,10 @@ export default async function EducationProgramDetailPage({ params }: PageProps) 
                     <SanityImage
                       image={program.mainImage}
                       locale={locale}
-                      width={800}
+                      width={678}
                       height={450}
                       className="h-auto w-full"
+                      objectFit="contain"
                     />
                   </figure>
                 )}

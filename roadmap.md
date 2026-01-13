@@ -483,7 +483,6 @@ public/
 - [x] Youth/Kids Programs page (`/youth`)
   - Program overview with activities (Shabbat meals, social events, holiday programs)
   - Regular programs section (Ktantanim, VIP Girls Club, JLI for Teens)
-  - CTA linking to events and contact
 - [x] Genizah Project page (`/genizah`)
   - Heritage project documenting ~700 religious books from early Jewish settlers
   - Collection highlights (prayer books, Kabbalah, historical texts)
@@ -495,12 +494,17 @@ public/
   - Contact numbers for appointments
   - Family Purity classes info
 - [x] Footer restructured
-  - Removed "The Rabbi" link (now "Leadership" → `/leadership`)
+  - Leadership link restored to Community section
   - Removed "Service Times" link (redundant with Synagogues)
   - Added "Genizah Project" to Community section
   - Added "Mikvah" to Synagogues section
   - Programs section: Events, Ganenu, SMMIS, Sunday School, Youth/Kids
 - [x] Full i18n support (EN + HE) for all new pages
+- [x] Education program images uploaded to Sanity
+  - Ganenu Preschool logo
+  - SMMIS logo
+  - Sunday School image
+  - Script: `scripts/upload-education-images.ts`
 
 ### Files Created
 
@@ -514,9 +518,11 @@ src/app/[locale]/
 ### Files Modified
 
 ```
-src/components/layout/footer.tsx  # Restructured footer links
-src/i18n/messages/en.json         # Added translations for 3 new pages
-src/i18n/messages/he.json         # Added Hebrew translations
+src/components/layout/footer.tsx      # Restructured footer links
+src/app/[locale]/education/page.tsx   # Uses SanityImage for program images
+src/i18n/messages/en.json             # Added translations for 3 new pages
+src/i18n/messages/he.json             # Added Hebrew translations
+scripts/upload-education-images.ts    # Updated with all 3 programs
 ```
 
 ---
@@ -587,6 +593,8 @@ src/i18n/messages/he.json         # Added Hebrew translations
 | 2026-01-12 | Events data source | Sync from live site | 2026 events only; script-based sync with real data from singaporejews.com |
 | 2026-01-13 | Additional pages | Static pages | Youth, Genizah, Mikvah as static pages with i18n; content from singaporejews.com |
 | 2026-01-13 | Footer structure | Reorganized links | Removed redundant links, added new pages, grouped by category |
+| 2026-01-13 | Education images | Sanity CMS | Uploaded to Sanity (not local files) for centralized content management |
+| 2026-01-13 | Page CTA sections | Removed | Navy CTA sections before footer removed for design consistency with other pages |
 
 ---
 

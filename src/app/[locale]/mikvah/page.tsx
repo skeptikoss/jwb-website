@@ -220,26 +220,6 @@ export default async function MikvahPage() {
         </div>
       </section>
 
-      {/* Location CTA */}
-      <section className="bg-navy py-16 text-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <MapPin className="mx-auto h-10 w-10 text-gold" />
-            <h2 className="mt-4 font-heading text-3xl font-bold">
-              {t("location.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl font-body text-cream/80">
-              {t("location.address")}
-            </p>
-            <Button
-              asChild
-              className="mt-8 bg-gold text-charcoal hover:bg-gold/90"
-            >
-              <Link href="/travel">{t("location.directions")}</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
       </main>
       <Footer />
     </div>

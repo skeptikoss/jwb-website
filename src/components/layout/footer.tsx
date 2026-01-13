@@ -9,6 +9,7 @@ const footerLinks = {
   community: [
     { key: "aboutUs", href: "/about" },
     { key: "history", href: "/history" },
+    { key: "leadership", href: "/leadership" },
     { key: "genizah", href: "/genizah" },
     { key: "contact", href: "/contact" },
   ],

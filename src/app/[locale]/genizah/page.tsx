@@ -7,12 +7,9 @@ import {
   MapPin,
   Users,
   Sparkles,
-  ExternalLink,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "@/i18n/navigation";
 import { Header, Footer } from "@/components/layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -184,38 +181,6 @@ export default async function GenizahPage() {
         </div>
       </section>
 
-      {/* Team & CTA Section */}
-      <section className="bg-navy py-16 text-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="font-heading text-3xl font-bold">{t("team.title")}</h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-cream/80">
-              {t("team.description")}
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                className="bg-gold text-charcoal hover:bg-gold/90"
-              >
-                <Link href="/museum">{t("team.visitMuseum")}</Link>
-              </Button>
-              <Button
-                asChild
-                className="border border-cream bg-transparent text-cream hover:bg-cream/10 hover:text-cream"
-              >
-                <a
-                  href="https://www.shalompoint.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t("team.shalomPoint")}
-                  <ExternalLink className="ms-2 h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
       </main>
       <Footer />
     </div>

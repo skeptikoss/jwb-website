@@ -257,7 +257,7 @@ Completed:
 - Phase D (partial): Events schema, listing/detail pages, 6 sample events
 - Phase D.1: Restaurant page, Museum page, footer navigation
 - Phase D.2: UI Polish (logo, favicon, dynamic homepage synagogues)
-- Phase D.3: Additional pages (Youth, Genizah, Mikvah), footer navigation fixes
+- Phase D.3: Additional pages (Youth, Genizah, Mikvah), footer fixes, education images
 
 Remaining:
 - Phase C: Stripe checkout integration, order confirmation
