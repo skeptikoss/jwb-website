@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { Header, Footer } from "@/components/layout";
 import { PortableTextRenderer, SanityImage } from "@/components/sanity";
+import { EventRsvpForm } from "@/components/events";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -347,8 +348,8 @@ export default async function EventDetailPage({ params }: PageProps) {
                   </CardContent>
                 </Card>
 
-                {/* Registration Button */}
-                {event.registrationLink && (
+                {/* Registration / RSVP */}
+                {event.registrationLink ? (
                   <Button
                     asChild
                     className="w-full bg-gold text-charcoal hover:bg-gold/90"
@@ -362,6 +363,20 @@ export default async function EventDetailPage({ params }: PageProps) {
                       <ExternalLink className="ms-2 h-4 w-4" />
                     </a>
                   </Button>
+                ) : (
+                  <Card className="border-t-[3px] border-t-gold bg-white shadow-sm">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="font-heading text-lg text-navy">
+                        {t("rsvp.title")}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <EventRsvpForm
+                        eventSlug={slug}
+                        eventName={name}
+                      />
+                    </CardContent>
+                  </Card>
                 )}
 
                 {/* Back to Events */}

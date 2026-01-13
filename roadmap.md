@@ -15,11 +15,13 @@
 | B.1 Content Fixes | ✅ Complete | 100% |
 | C. E-commerce | 🟡 In Progress | 90% |
 | C.1 Community Photos | ✅ Complete | 100% |
-| D. Events & Booking | 🟡 In Progress | 70% |
+| D. Events & Booking | 🟡 In Progress | 85% |
 | D.1 Restaurant & Museum Pages | ✅ Complete | 100% |
 | D.2 UI Polish | ✅ Complete | 100% |
 | D.3 Additional Pages | ✅ Complete | 100% |
-| E. Member Portal & Donations | 🔲 Not Started | 0% |
+| D.4 RSVP Form | ✅ Complete | 100% |
+| E. Member Portal & Donations | 🟡 In Progress | 40% |
+| E.1 Donation Page | ✅ Complete | 100% |
 | F. Polish & Optimization | 🔲 Not Started | 0% |
 | G. Launch Preparation | 🔲 Not Started | 0% |
 
@@ -329,7 +331,7 @@ scripts/
 
 ## Phase D: Events & Booking 🟡
 
-**Status:** In Progress (70%)
+**Status:** In Progress (85%)
 **Started:** 2026-01-12
 
 ### Tasks Completed
@@ -346,10 +348,15 @@ scripts/
 - [x] Homepage dynamic events section (fetches upcoming events from Sanity)
 - [x] Homepage dynamic Shabbat times (fetches from Hebcal API)
 - [x] Age range field support for youth events
+- [x] **RSVP form** — Event detail pages now show inline RSVP form when no external registration link exists
+  - Form fields: Name, Email, Phone (optional), Number of Attendees
+  - Client-side validation with error messages
+  - Success state with demo notice
+  - Full i18n support (EN + HE)
+  - Component: `src/components/events/event-rsvp-form.tsx`
 
 ### Tasks Remaining
 
-- [ ] RSVP/booking flow
 - [ ] Shabbat meal reservations
 - [ ] Stripe integration for paid events
 - [ ] Email confirmations (mock for demo)
@@ -531,19 +538,38 @@ scripts/upload-education-images.ts    # Updated with all 3 programs
 
 ---
 
-## Phase E: Member Portal & Donations 🔲
+## Phase E: Member Portal & Donations 🟡
 
-**Status:** Not Started
+**Status:** In Progress (40%)
+**Started:** 2026-01-14
 
-### Tasks
+### Tasks Completed
+
+- [x] **Donation page with Stripe** (`/donate`)
+  - Preset amounts: $18, $36, $72, $180, $360 (chai multiples)
+  - Custom amount input with validation ($1 - $100,000)
+  - One-time and monthly recurring options
+  - Stripe Checkout redirect flow (PCI-compliant)
+  - Success page with conditional monthly billing note
+  - Cancel page with friendly messaging
+  - Origin validation for security
+  - Full i18n support (EN + HE)
+  - Files created:
+    - `src/app/[locale]/donate/page.tsx`
+    - `src/app/[locale]/donate/success/page.tsx`
+    - `src/app/[locale]/donate/cancel/page.tsx`
+    - `src/app/api/donate/checkout/route.ts`
+    - `src/components/donate/donation-form.tsx`
+    - `src/components/donate/amount-selector.tsx`
+    - `src/lib/stripe/` (client, server, types)
+
+### Tasks Remaining
 
 - [ ] NextAuth configuration
 - [ ] Member dashboard
 - [ ] Profile management
 - [ ] Order history
 - [ ] Event history
-- [ ] Donation page with Stripe
-- [ ] Recurring donation support
 
 ---
 
@@ -599,6 +625,9 @@ scripts/upload-education-images.ts    # Updated with all 3 programs
 | 2026-01-13 | Footer structure | Reorganized links | Removed redundant links, added new pages, grouped by category |
 | 2026-01-13 | Education images | Sanity CMS | Uploaded to Sanity (not local files) for centralized content management |
 | 2026-01-13 | Page CTA sections | Removed | Navy CTA sections before footer removed for design consistency with other pages |
+| 2026-01-14 | RSVP form placement | Sidebar card | Form in sidebar when no external registrationLink; more accessible than modal |
+| 2026-01-14 | Stripe integration | Checkout redirect | PCI-compliant redirect flow; simpler than embedded Elements |
+| 2026-01-14 | Donation amounts | Chai multiples | $18, $36, $72, $180, $360 follow Jewish giving tradition (חי = 18) |
 
 ---
 

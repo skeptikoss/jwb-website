@@ -7,7 +7,7 @@
 - **Type:** Portfolio/demo project (not live client)
 - **Stack:** Next.js 16 + React 19 + Tailwind v4 + Sanity CMS + Stripe (test mode)
 - **Design:** "Heritage Meets Haven" theme with Hebrew RTL support
-- **Status:** Phase D (Events) 60% complete — see `roadmap.md`
+- **Status:** Phase D (Events) 85% complete, Phase E (Payments) 40% — see `roadmap.md`
 - **Sanity Project ID:** `r3h9xffe`
 
 ## Key Files
@@ -45,7 +45,10 @@ src/
 │   │   ├── youth/         # Youth & Kids Programs page
 │   │   ├── genizah/       # Singapore Genizah Project page
 │   │   ├── mikvah/        # Mikvah facilities page
-│   │   └── shop/          # Shop list, [slug] detail, cart, checkout
+│   │   ├── shop/          # Shop list, [slug] detail, cart, checkout
+│   │   └── donate/        # Donation page + success/cancel
+│   ├── api/
+│   │   └── donate/        # Stripe checkout API routes
 │   ├── studio/[[...tool]] # Sanity Studio (embedded)
 │   ├── layout.tsx         # Root layout with fonts
 │   └── globals.css        # Design tokens
@@ -56,7 +59,8 @@ src/
 │   │   ├── portable-text.tsx  # Rich text renderer
 │   │   └── sanity-image.tsx   # Image component
 │   ├── shop/              # ProductCard, ProductGrid, CartDrawer, etc. (12 components)
-│   ├── events/            # Event cards, calendar (Phase D)
+│   ├── events/            # Event cards, RSVP form (Phase D)
+│   ├── donate/            # AmountSelector, DonationForm (Phase E)
 │   └── common/            # Shared components
 ├── i18n/
 │   ├── messages/          # en.json, he.json
@@ -77,9 +81,13 @@ src/
 │   └── use-cart.ts        # Cart hook
 └── lib/
     ├── utils.ts           # cn() helper for Tailwind
-    └── sanity/            # Sanity query utilities
-        ├── queries.ts     # GROQ query helpers
-        └── types.ts       # TypeScript interfaces
+    ├── sanity/            # Sanity query utilities
+    │   ├── queries.ts     # GROQ query helpers
+    │   └── types.ts       # TypeScript interfaces
+    └── stripe/            # Stripe payment utilities
+        ├── types.ts       # DonationCheckoutRequest, etc.
+        ├── server.ts      # Stripe SDK, checkout session creation
+        └── client.ts      # loadStripe helper
 ```
 
 ### Routing
@@ -246,7 +254,7 @@ const title = page.title[locale]; // "en" or "he"
 
 ## Phase Status
 
-See `roadmap.md` for detailed progress. Current: **Phase D 70% Complete**.
+See `roadmap.md` for detailed progress. Current: **Phase D 85%, Phase E 40%**.
 
 Completed:
 - Phase A: Foundation (Next.js, Tailwind, shadcn/ui, i18n)
@@ -258,10 +266,13 @@ Completed:
 - Phase D.1: Restaurant page, Museum page, footer navigation
 - Phase D.2: UI Polish (logo, favicon, dynamic homepage synagogues)
 - Phase D.3: Additional pages (Youth, Genizah, Mikvah), footer fixes, education images
+- Phase D.4: Event RSVP form (inline sidebar card approach)
+- Phase E.1: Donation page with Stripe Checkout (test mode)
 
 Remaining:
-- Phase C: Stripe checkout integration, order confirmation
-- Phase D: RSVP/booking flow, Shabbat meal reservations, paid events
+- Phase C: Shop checkout integration, order confirmation
+- Phase D: Shabbat meal reservations, paid event tickets
+- Phase E: Shop Stripe integration, webhook handling
 
 ## Sanity Content Fetching Pattern
 

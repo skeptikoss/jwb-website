@@ -88,6 +88,30 @@
         "holiday": "Holiday",
         "shabbat": "Shabbat",
         "sports": "Sports"
+      },
+      "rsvp": {
+        "title": "RSVP for Event",
+        "fields": {
+          "name": "Full Name",
+          "email": "Email Address",
+          "phone": "Phone (Optional)",
+          "attendees": "Number of Attendees"
+        },
+        "submit": "Submit RSVP",
+        "submitting": "Submitting...",
+        "submitAnother": "Submit Another RSVP",
+        "success": {
+          "title": "RSVP Confirmed!",
+          "message": "Thank you for your RSVP. We look forward to seeing you at the event.",
+          "demo": "This is a demo - no actual registration was processed."
+        },
+        "validation": {
+          "nameRequired": "Please enter your name",
+          "emailRequired": "Please enter your email address",
+          "emailInvalid": "Please enter a valid email address",
+          "attendeesMin": "At least 1 attendee required",
+          "attendeesMax": "Maximum 20 attendees allowed"
+        }
       }
     },
     "leadership": {
@@ -424,6 +448,62 @@
           "continueShopping": "Continue Shopping",
           "backToHome": "Back to Home"
         }
+      }
+    },
+    "donate": {
+      "title": "Support Our Community",
+      "subtitle": "Your donation helps maintain our synagogues and support vital community programs",
+      "badge": "Tax Deductible",
+      "amountLabel": "Donation Amount",
+      "amounts": {
+        "18": "$18",
+        "36": "$36",
+        "72": "$72",
+        "180": "$180",
+        "360": "$360"
+      },
+      "chai": "Chai",
+      "doubleChai": "Double Chai",
+      "customAmount": "Custom Amount",
+      "customPlaceholder": "Enter amount",
+      "frequencyLabel": "Donation Type",
+      "oneTime": "One-Time",
+      "monthly": "Monthly",
+      "monthlyNote": "Billed monthly. Cancel anytime.",
+      "submit": "Donate Now",
+      "processing": "Processing...",
+      "securePayment": "Secure payment powered by Stripe",
+      "taxNote": "Donations may be tax-deductible. You will receive a receipt via email.",
+      "validation": {
+        "required": "Please select an amount",
+        "minimum": "Minimum donation is $1",
+        "maximum": "Maximum donation is $100,000"
+      },
+      "error": {
+        "generic": "Unable to process donation. Please try again.",
+        "network": "Network error. Please check your connection."
+      },
+      "impact": {
+        "title": "Your Impact",
+        "synagogues": "Maintain our historic synagogues",
+        "programs": "Support community programs and events",
+        "education": "Fund Jewish education initiatives",
+        "welfare": "Help community members in need"
+      },
+      "success": {
+        "title": "Thank You for Your Generosity!",
+        "message": "Your donation has been received. A receipt has been sent to your email.",
+        "monthlyNote": "Your card will be charged monthly until you cancel.",
+        "demoNotice": "This is a demo - no actual payment was processed.",
+        "backHome": "Back to Home",
+        "donateAgain": "Make Another Donation"
+      },
+      "cancel": {
+        "title": "Donation Cancelled",
+        "message": "No charges were made to your card.",
+        "encouragement": "Every contribution makes a difference. We hope you'll consider supporting our community in the future.",
+        "tryAgain": "Try Again",
+        "backHome": "Back to Home"
       }
     }
   },
